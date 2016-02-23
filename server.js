@@ -9,7 +9,7 @@ var app               = express();
 
 const PORT = process.env.PORT || 8080;
 
-var sequelize = new Sequelize('heroku_11a4b652501008d', 'b43a992765230f', '516f9bc1');
+var sequelize = new Sequelize(process.env.DATABASE_URL);
 // var sequelize = new Sequelize('Ragat_db', 'root');
 
 app.use(bodyParser.urlencoded({extended: false}));
