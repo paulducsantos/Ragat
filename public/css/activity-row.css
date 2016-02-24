@@ -1,0 +1,28 @@
+.activity-block {
+  display: flex;
+  justify-content: space-around;
+}
+
+.activity-block a {
+  color: black;
+}
+
+.activities {
+  height: 100px;
+  width: 100px;
+  /*border: 1px solid black;*/
+  display: block;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-select {
+  text-align: justify;
+  width: 100px;
+}
+
+.fa-cutlery, .fa-bed, .fa-coffee, .fa-futbol-o {
+  color: black;
+}
