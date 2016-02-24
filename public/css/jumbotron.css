@@ -1,0 +1,29 @@
+.jumbotron {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+}
+
+.jumbotron-img {
+
+}
+
+  .jumbotron .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .jumbotron .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
