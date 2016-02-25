@@ -1,4 +1,4 @@
-.jumbotron {
+/*.jumbotron {
   min-height: 380px;
   line-height: 0;
   height: auto;
@@ -26,4 +26,9 @@
   #index-banner .section {
     top: 0;
   }
+}*/
+
+.parallax-container {
+  height: 450px;
+  border: 1px solid black;
 }
