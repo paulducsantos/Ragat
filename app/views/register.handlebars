@@ -10,41 +10,70 @@
 </head>
 <body> -->
 
-  <div class="row">
-    <form class="col s12 m6 offset-m3 center" id="my_form" action="/" method="post">
+<!--   <div class="row">
+    <form class="col s12 m6 offset-m3 center" id="my_form">
       <div class="section center">
         <h4>Register Here</h4>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate" name="first_name">
+          <input id="first_name" class="validate" name="first_name">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" class="validate">
           <label for="last_name">Last Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" class="validate">
           <label for="last_name">Username</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
+          <input id="password" class="validate">
           <label for="password">Password</label>
         </div>
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
+          <input id="password" class="validate">
           <label for="password">Re-Enter Password</label>
         </div>
       </div>
-      <a class="waves-effect waves-light btn submit-btn"><i class="mdi-content-send white-text"></i> Submit</a>
+      <input class="waves-effect waves-light btn submit-btn" type="submit" value="Validate!">
     </form>
-  </div>
+  </div> -->
 
+<div class="row">
+    <form class="col s12 m6 offset-m3 center" id="myform">
+        <div class="section center">
+            <h4>Register Here</h4>
+        </div>
+        <div class="col m6">
+            <label for="first_name">First Name</label>
+            <input id="first_name">
+        </div>
+        <div class="col m6">
+            <label for="last_name">Last Name</label>
+            <input id="last_name">
+        </div>
+        <div class="col m12">
+            <label for="user_name">Username </label>
+            <input id="user" name="user">
+        </div>
+        <div class="col m6">
+            <label for="password">Password </label>
+            <input id="password" name="password">
+        </div>
+        <div class="col m6">
+            <label for="password_check">Re-Enter Password</label>
+            <input id="password_check" name="password_check">
+        </div>
+        <br>
+        <input class="waves-effect waves-light btn submit-btn" type="submit" value="Validate!">
+    </form>
+</div>
 <!-- 
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
