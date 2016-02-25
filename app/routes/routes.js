@@ -1,8 +1,8 @@
-
+var renders = require('../controller/controller.js')
 
 module.exports.routes =  function(app) {
 
-  app.get('/', function(req,res){
-    res.render('home')
-  });
+  app.get('/', renders.home);
+
+  app.get('/register', renders.register);
 }
