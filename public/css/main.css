@@ -1,4 +1,14 @@
-.nav-wrapper {
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+.ruNav {
   background-color: #CC0033;
 }
 
@@ -6,3 +16,4 @@
   width: 100%;
   background-color: #CC0033;
 }
+
