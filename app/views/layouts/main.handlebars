@@ -8,27 +8,31 @@
   <link rel="stylesheet" type="text/css" href="static/css/activity-row.css">
   <link rel="stylesheet" type="text/css" href="static/css/register.css">
   <link rel="stylesheet" type="text/css" href="static/css/jumbotron.css">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <!-- Navbar -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
 <nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">RURated</a>
+  <div class="nav-wrapper row">
+    <a href="#!" class="brand-logo col push-m3">RURated</a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
+      <li><a href='register.html'>Register</a></li>
     </ul>
   </div>
 </nav>
   {{{ body }}}
 
+<!-- Modal Trigger -->
+  <a class="btn modal-trigger" href="#modal1" id="aboutModal">About Us</a>
 
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Created By</h4>
+        <p>Paul Santos</p>
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <script src="static/js/main.js"></script>
