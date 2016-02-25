@@ -11,29 +11,29 @@
 <body> -->
 
   <div class="row">
-    <form class="col s12 m6 offset-m3 center">
+    <form class="col s12 m6 offset-m3 center" method="post" action="/register/addUser">
       <div class="section center">
         <h4>Register Here</h4>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate" name="firstname">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="text" class="validate" name="lastname">
           <label for="last_name">Last Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="text" class="validate" name="username">
           <label for="last_name">Username</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
+          <input id="password" type="password" class="validate" name="password">
           <label for="password">Password</label>
         </div>
         <div class="input-field col s6">
@@ -41,7 +41,7 @@
           <label for="password">Re-Enter Password</label>
         </div>
       </div>
-      <a class="waves-effect waves-light btn submit-btn"><i class="mdi-content-send white-text"></i> Submit</a>
+      <button type="submit"><a class="waves-effect waves-light btn submit-btn"><i class="mdi-content-send white-text"></i> Submit</a></button>
     </form>
   </div>
 
