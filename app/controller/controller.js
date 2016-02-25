@@ -8,3 +8,7 @@ exports.home = function(req, res, next) {
 exports.register = function(req, res, next) {
   res.render('register');
 }
+
+exports.activities = function(req, res, next) {
+  res.render('activities');
+}
