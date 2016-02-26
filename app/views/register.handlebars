@@ -11,7 +11,7 @@
 <body> -->
 
   <div class="row">
-    <form class="col s12 m6 offset-m3 center" method="post" action="/register/addUser">
+    <form class="col s12 m6 offset-m3 center" method="post" action="/register/addUser" id="myform">
       <div class="section center">
         <h4>Register Here</h4>
       </div>
@@ -37,11 +37,12 @@
           <label for="password">Password</label>
         </div>
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
-          <label for="password">Re-Enter Password</label>
+          <input id="password_check" type="password" class="validate">
+          <label for="password_check">Re-Enter Password</label>
         </div>
       </div>
-      <button type="submit"><a class="waves-effect waves-light btn submit-btn"><i class="mdi-content-send white-text"></i> Submit</a></button>
+      <input class="waves-effect waves-light btn submit-btn submit" type="submit" value="Submit">
+      <!-- <button type="submit"><a class="waves-effect waves-light btn submit-btn"><i class="mdi-content-send white-text"></i> Submit</a></button> -->
     </form>
   </div>
 
@@ -51,6 +52,8 @@
 
 </body>
 </html> -->
+
+
 
 
 

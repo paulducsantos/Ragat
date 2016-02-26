@@ -6,5 +6,5 @@ module.exports.routes =  function(app) {
 
   app.get('/register', renders.register);
 
-  app.post('/register/addUser', renders.newUser, renders.home);
+  app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 }

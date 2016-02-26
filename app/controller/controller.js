@@ -7,6 +7,10 @@ exports.home = function(req, res, next) {
   res.render('home');
 }
 
+exports.homeRedirect = function(req, res, next) {
+  res.redirect('/');
+}
+
 exports.register = function(req, res, next) {
   res.render('register');
 }
