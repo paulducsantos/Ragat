@@ -1,8 +1,10 @@
-var bcrypt            = require('bcryptjs');
+var bcrypt            = require('bcryptjs');//REQUIRE FOR THE HOOK
 var Sequelize         = require('sequelize');
 // var sequelize = new Sequelize(process.env.DATABASE_URL);
 var sequelize = new Sequelize('Ragat_db', 'root');
 
+
+//MODEL FOR USERS
 var User = sequelize.define('User', {
   username: {
     type: Sequelize.STRING,
@@ -31,6 +33,8 @@ var User = sequelize.define('User', {
   }
 });
 
+
+//SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
 
 exports.User = User;
