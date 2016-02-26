@@ -6,15 +6,19 @@ $(document).ready(function(){
 
   $("#myform").validate({
     rules:{
-      password: {
-        required: true
+      username: {
+        rangelength: [6, 30]
+      },
+      userPassword: {
+        required: true,
+        minlength: 8
       },
       password_check: {
-        required: true,
-        equalTo: "#password"
+        equalTo: "#userPassword"
       }
     },
     submitHandler: function(form) {
+      // e.preventDefault();
     // do other things for a valid form
       form.submit();
     }
