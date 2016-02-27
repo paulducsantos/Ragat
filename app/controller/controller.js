@@ -28,3 +28,8 @@ exports.newUser = function(req, res, next) {
   models.User.create(req.body);
   next();
 }
+
+exports.newActivity = function(req, res, next) {
+  models.Activity.create(req.body);
+  next();
+}

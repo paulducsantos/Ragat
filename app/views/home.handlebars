@@ -20,26 +20,26 @@
     <div class="modal-content">
       <h4>New Spot</h4>
         <div class="row">
-          <form class="col s12">
+          <form class="col s12" method="post" action="/addActivity">
             <div class="row">
               <div class="input-field col s6">
-                <select>
+                <select name="activityType">
                   <option value="" disabled selected>Type of Spot</option>
-                  <option value="1">Food</option>
-                  <option value="2">Cafe</option>
-                  <option value="3">Dorms</option>
-                  <option value="3">Other</option>
+                  <option value="food">Food</option>
+                  <option value="cafe">Cafe</option>
+                  <option value="dorm">Dorms</option>
+                  <option value="other">Other</option>
                 </select>
                 <label>Materialize Select</label>
               </div>
               <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Name of Activity</label>
+                <input id="activity-name" type="text" class="validate" name="name">
+                <label for="activity-name">Name of Activity</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <select>
+                <select name="foodType">
                   <option value="" disabled selected>Type of Food</option>
                   <option value="1">american</option>
                   <option value="2">japanese</option>
