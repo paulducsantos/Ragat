@@ -1,7 +1,9 @@
 var bcrypt            = require('bcryptjs');//REQUIRE FOR THE HOOK
 var Sequelize         = require('sequelize');
-// var sequelize = new Sequelize(process.env.DATABASE_URL);
-var sequelize = new Sequelize('Ragat_db', 'root');
+
+require('dotenv').config();
+var sequelize = new Sequelize(process.env.JAWSDB_URL);
+// var sequelize = new Sequelize('Ragat_db', 'root');
 
 
 //MODEL FOR USERS
