@@ -17,3 +17,7 @@
   background-color: #CC0033;
 }
 
+#filter-types {
+  display: flex;
+}
+
