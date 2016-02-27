@@ -6,5 +6,6 @@ $(document).ready(function(){
 
   $('#login').webuiPopover({url:'#login-form'});
 
+  $('select').material_select();
 
 });

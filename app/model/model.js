@@ -17,15 +17,21 @@ var User = sequelize.define('User', {
   },
   userPassword: {
     type: Sequelize.STRING,
-    notEmpty: true
+    validate: {
+      notEmpty: true  
+    }
   },
   firstname: {
     type: Sequelize.STRING,
-    notEmpty: true
+    validate: {
+      notEmpty: true  
+    }
   },
   lastname: {
     type: Sequelize.STRING,
-    notEmpty: true
+    validate: {
+      notEmpty: true  
+    }
   }
 }, {
   hooks: {
@@ -35,8 +41,53 @@ var User = sequelize.define('User', {
   }
 });
 
+//MODEL FOR ACTIVITIES
+var Activity = sequelize.define('Activity', {
+  activityType: {
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true,
+      isIn: [['food', 'dorm', 'other', 'cafe']]
+    }
+  },
+  name: {
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true  
+    }
+  },
+  rating: {
+    type: Sequelize.DECIMAL
+  },
+  foodType: {
+    type: Sequelize.STRING,
+    validate: {
+      isIn: [['american', 'japanese', 'korean', 'italian', 'indian', 'chinese', 'filipino', 'dining hall', 'mexican', 'ethiopian', 'grease truck', 'middle eastern']]
+    }
+  }
+});
+
+//MODEL FOR REVIEWS
+var Review = sequelize.define('Review', {
+  review: {
+    type: Sequelize.TEXT,
+    validate: {
+      notEmpty: true,
+    }
+  },
+  rating: {
+    type: Sequelize.INTEGER,
+    validate: {
+      notEmpty: true,
+    }
+  }
+});
+
 
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
 
+//EXPORTS
 exports.User = User;
+exports.Activity = Activity;
+exports.Review = Review;
