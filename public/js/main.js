@@ -4,5 +4,8 @@ $(document).ready(function(){
 
   $('.parallax').parallax();
 
+  $('#login').webuiPopover({url:'#login-form'});
+
   $('select').material_select();
+
 });
