@@ -41,6 +41,7 @@ var User = sequelize.define('User', {
   }
 });
 
+//MODEL FOR ACTIVITIES
 var Activity = sequelize.define('Activity', {
   activityType: {
     type: sequelize.STRING,
@@ -66,9 +67,27 @@ var Activity = sequelize.define('Activity', {
   }
 });
 
+//MODEL FOR REVIEWS
+var Review = sequelize.define('Review', {
+  review: {
+    type: sequelize.TEXT,
+    validate: {
+      notEmpty: true,
+    }
+  },
+  rating: {
+    type: sequelize.INTEGER,
+    validate: {
+      notEmpty: true,
+    }
+  }
+});
+
 
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
 
+//EXPORTS
 exports.User = User;
 exports.Activity = Activity;
+exports.Review = Review;
