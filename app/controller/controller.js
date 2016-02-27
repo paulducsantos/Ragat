@@ -12,3 +12,7 @@ exports.register = function(req, res, next) {
 exports.activities = function(req, res, next) {
   res.render('activities');
 }
+
+exports.test = function(req, res, next) {
+  res.render('view_activity');
+}
