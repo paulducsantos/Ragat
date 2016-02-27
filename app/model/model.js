@@ -9,28 +9,59 @@ var sequelize = new Sequelize(process.env.JAWSDB_URL);
 //MODEL FOR USERS
 var User = sequelize.define('User', {
   username: {
-    type: Sequelize.STRING,
+    type: sequelize.STRING,
     isUnique: true,
     validate: {
       len: [6,30]
     }
   },
   userPassword: {
-    type: Sequelize.STRING,
-    notEmpty: true
+    type: sequelize.STRING,
+    validate: {
+      notEmpty: true  
+    }
   },
   firstname: {
-    type: Sequelize.STRING,
-    notEmpty: true
+    type: sequelize.STRING,
+    validate: {
+      notEmpty: true  
+    }
   },
   lastname: {
-    type: Sequelize.STRING,
-    notEmpty: true
+    type: sequelize.STRING,
+    validate: {
+      notEmpty: true  
+    }
   }
 }, {
   hooks: {
     beforeCreate: function(input){
       input.userPassword = bcrypt.hashSync(input.userPassword, 10);
+    }
+  }
+});
+
+var Activity = sequelize.define('Activity', {
+  activityType: {
+    type: sequelize.STRING,
+    validate: {
+      notEmpty: true,
+      isIn: [['food', 'dorm', 'other', 'cafe']]
+    }
+  },
+  name: {
+    type: sequelize.STRING,
+    validate: {
+      notEmpty: true  
+    }
+  },
+  rating: {
+    type: sequelize.DECIMAL
+  },
+  foodType: {
+    type: sequelize.STRING,
+    validate: {
+      isIn: [['american', 'japanese', 'korean', 'italian', 'indian', 'chinese', 'filipino', 'dining hall', 'mexican', 'ethiopian', 'grease truck', 'middle eastern']]
     }
   }
 });
