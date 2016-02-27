@@ -71,3 +71,4 @@ var Activity = sequelize.define('Activity', {
 sequelize.sync();
 
 exports.User = User;
+exports.Activity = Activity;
