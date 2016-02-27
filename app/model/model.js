@@ -62,7 +62,7 @@ var Activity = sequelize.define('Activity', {
   foodType: {
     type: Sequelize.STRING,
     validate: {
-      isIn: [['american', 'japanese', 'korean', 'italian', 'indian', 'chinese', 'filipino', 'dining hall', 'mexican', 'ethiopian', 'grease truck', 'middle eastern']]
+      isIn: [['american', 'japanese', 'korean', 'italian', 'indian', 'chinese', 'filipino', 'dining hall', 'mexican', 'ethiopian', 'grease truck', 'middle-eastern']]
     }
   }
 });
@@ -83,6 +83,16 @@ var Review = sequelize.define('Review', {
   }
 });
 
+var findActivity = function(activityName) {
+  Activity.findAll({
+    where: {
+      name: activityName
+    }
+  }).then(function(data) {
+    console.log(data);
+  });
+}
+
 
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
@@ -91,3 +101,4 @@ sequelize.sync();
 exports.User = User;
 exports.Activity = Activity;
 exports.Review = Review;
+exports.findActivity = findActivity;

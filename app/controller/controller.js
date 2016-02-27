@@ -31,5 +31,12 @@ exports.newUser = function(req, res, next) {
 
 exports.newActivity = function(req, res, next) {
   models.Activity.create(req.body);
-  next();
+  res.redirect('/activities/' + req.body.name);
+}
+
+exports.activityListing = function(req, res, next) {
+  var name = req.params.name;
+  var data = models.findActivity(name);
+  console.log({data});
+  res.render('view_activity', {data});
 }
