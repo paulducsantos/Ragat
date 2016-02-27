@@ -15,6 +15,14 @@ exports.register = function(req, res, next) {
   res.render('register');
 }
 
+exports.activities = function(req, res, next) {
+  res.render('activities');
+}
+
+exports.test = function(req, res, next) {
+  res.render('view_activity');
+}
+
 exports.newUser = function(req, res, next) {
   console.log(models.User);
   models.User.create(req.body);
