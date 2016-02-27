@@ -35,8 +35,24 @@ var User = sequelize.define('User', {
   }
 });
 
+var Review = sequelize.define('Review', {
+  review: {
+    type: sequelize.TEXT,
+    validate: {
+      notEmpty: true,
+    }
+  },
+  rating: {
+    type: sequelize.INTEGER,
+    validate: {
+      notEmpty: true,
+    }
+  }
+});
+
 
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
 
 exports.User = User;
+exports.Review = Review;
