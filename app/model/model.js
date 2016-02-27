@@ -9,26 +9,26 @@ var sequelize = new Sequelize(process.env.JAWSDB_URL);
 //MODEL FOR USERS
 var User = sequelize.define('User', {
   username: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     isUnique: true,
     validate: {
       len: [6,30]
     }
   },
   userPassword: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     validate: {
       notEmpty: true  
     }
   },
   firstname: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     validate: {
       notEmpty: true  
     }
   },
   lastname: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     validate: {
       notEmpty: true  
     }
@@ -44,23 +44,23 @@ var User = sequelize.define('User', {
 //MODEL FOR ACTIVITIES
 var Activity = sequelize.define('Activity', {
   activityType: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     validate: {
       notEmpty: true,
       isIn: [['food', 'dorm', 'other', 'cafe']]
     }
   },
   name: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     validate: {
       notEmpty: true  
     }
   },
   rating: {
-    type: sequelize.DECIMAL
+    type: Sequelize.DECIMAL
   },
   foodType: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     validate: {
       isIn: [['american', 'japanese', 'korean', 'italian', 'indian', 'chinese', 'filipino', 'dining hall', 'mexican', 'ethiopian', 'grease truck', 'middle eastern']]
     }
@@ -70,13 +70,13 @@ var Activity = sequelize.define('Activity', {
 //MODEL FOR REVIEWS
 var Review = sequelize.define('Review', {
   review: {
-    type: sequelize.TEXT,
+    type: Sequelize.TEXT,
     validate: {
       notEmpty: true,
     }
   },
   rating: {
-    type: sequelize.INTEGER,
+    type: Sequelize.INTEGER,
     validate: {
       notEmpty: true,
     }
