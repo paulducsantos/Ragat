@@ -40,5 +40,4 @@ exports.activityListing = function(req, res, next) {
   models.findActivity(name).then(function(data){
     res.render('view_activity', {data});
   });;
-  
 }
