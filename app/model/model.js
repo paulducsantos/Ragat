@@ -84,12 +84,10 @@ var Review = sequelize.define('Review', {
 });
 
 var findActivity = function(activityName) {
-  Activity.findAll({
+  return Activity.findAll({
     where: {
       name: activityName
     }
-  }).then(function(data) {
-    console.log(data);
   });
 }
 

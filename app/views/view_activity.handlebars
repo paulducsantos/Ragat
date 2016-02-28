@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col m6 s12 offset-m3">
       <div class="title">
-        <h4>Name of the place</h4>
+        {{#each data}}
+        <h4>{{name}}</h4>
+        {{/each}}
       </div>
       <div class="description">
         <p>Lorem ipsum dolor sit amet, id aeque meliore his, eum eu vocent expetendis. Ius at feugiat accumsan, eum ea delenit petentium efficiendi. Duo in cibo melius, no pri minimum consulatu, eos impetus equidem ex. Qui legere vulputate ad, eum munere accommodare cu. Quot partem invidunt et eam.</p>
@@ -37,4 +39,3 @@
   </div>
 </div>
 
-{{data.name}}

@@ -36,7 +36,9 @@ exports.newActivity = function(req, res, next) {
 
 exports.activityListing = function(req, res, next) {
   var name = req.params.name;
-  var data = models.findActivity(name);
-  console.log({data});
-  res.render('view_activity', {data});
+  console.log(name);
+  models.findActivity(name).then(function(data){
+    res.render('view_activity', {data});
+  });;
+  
 }
