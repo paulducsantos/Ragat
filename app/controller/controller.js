@@ -30,8 +30,9 @@ exports.newUser = function(req, res, next) {
 }
 
 exports.newActivity = function(req, res, next) {
-  models.Activity.create(req.body);
-  res.redirect('/activities/' + req.body.name);
+  models.Activity.create(req.body).then(function() {
+    res.redirect('/activities/' + req.body.name);
+  });
 }
 
 exports.activityListing = function(req, res, next) {
