@@ -28,3 +28,17 @@ exports.newUser = function(req, res, next) {
   models.User.create(req.body);
   next();
 }
+
+exports.newActivity = function(req, res, next) {
+  models.Activity.create(req.body).then(function() {
+    res.redirect('/activities/' + req.body.name);
+  });
+}
+
+exports.activityListing = function(req, res, next) {
+  var name = req.params.name;
+  console.log(name);
+  models.findActivity(name).then(function(data){
+    res.render('view_activity', {data});
+  });;
+}

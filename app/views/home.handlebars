@@ -20,44 +20,46 @@
   <div class="modal-content">
     <h4>New Spot</h4>
     <div class="row">
-      <form class="col s12">
+      <form class="col s12" method="post" action="/addActivity">
         <div class="row">
           <div class="input-field col s6">
-            <select>
+            <select name="activityType">
               <option value="" disabled selected>Type of Spot</option>
-              <option value="1">Food</option>
-              <option value="2">Cafe</option>
-              <option value="3">Dorms</option>
-              <option value="3">Other</option>
+              <option value="food">Food</option>
+              <option value="cafe">Cafe</option>
+              <option value="dorm">Dorms</option>
+              <option value="other">Other</option>
             </select>
             <label>Type of Spot</label>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
+            <input id="last_name" type="text" class="validate" name="name">
             <label for="last_name">Name of Spot</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <select>
+            <select name="foodType">
               <option value="" disabled selected>Type of Food</option>
-              <option value="1">american</option>
-              <option value="2">japanese</option>
-              <option value="3">korean</option>
-              <option value="3">italian</option>
-              <option value="3">indian</option>
-              <option value="3">chinese</option>
-              <option value="3">filipino</option>
-              <option value="3">dining hall</option>
-              <option value="3">mexican</option>
-              <option value="3">ethiopian</option>
-              <option value="3">grease truck</option>
-              <option value="3">midle-eastern</option>
+              <option value="american">american</option>
+              <option value="japanese">japanese</option>
+              <option value="korean">korean</option>
+              <option value="italian">italian</option>
+              <option value="indian">indian</option>
+              <option value="chinese">chinese</option>
+              <option value="filipino">filipino</option>
+              <option value="dining hall">dining hall</option>
+              <option value="mexican">mexican</option>
+              <option value="ethiopian">ethiopian</option>
+              <option value="grease truck">grease truck</option>
+              <option value="middle-eastern">midle-eastern</option>
             </select>
-            <label>Type of Foodt</label>
+            <label>Type of Food</label>
           </div>
         </div>
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a href="" class=" modal-action modal-close waves-effect waves-green btn-flat"><button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button></a>
       </form>
     </div>
   </div>
