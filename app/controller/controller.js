@@ -59,8 +59,8 @@ exports.newActivity = function(req, res, next) {
 
 exports.activityListing = function(req, res, next) {
   var name = req.params.name;
-  console.log(name);
   models.findActivity(name).then(function(data){
+    models.updateRating(data[0].id);
     res.render('view_activity', {data});
   });
 }

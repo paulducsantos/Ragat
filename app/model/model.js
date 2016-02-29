@@ -57,7 +57,7 @@ var Activity = sequelize.define('Activity', {
     }
   },
   rating: {
-    type: Sequelize.DECIMAL
+    type: Sequelize.DECIMAL(3,2)
   },
   foodType: {
     type: Sequelize.STRING,
@@ -91,6 +91,24 @@ var findActivity = function(activityName) {
   });
 }
 
+Activity.hasMany(Review);
+User.hasMany(Review);
+
+var updateRating = function(activityId) {
+  sequelize.query('SELECT AVG(rating) AS avg FROM Reviews WHERE ActivityId=' + activityId)
+  .then(function(data) {
+    var avg = Math.round(data[0][0].avg * 2)/2;
+    debugger;
+    Activity.update(
+      {
+        rating: avg
+      },
+      {
+        where: {id: activityId}
+      }
+    );
+  });
+}
 
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
@@ -100,3 +118,4 @@ exports.User = User;
 exports.Activity = Activity;
 exports.Review = Review;
 exports.findActivity = findActivity;
+exports.updateRating = updateRating;
