@@ -30,26 +30,23 @@ exports.newUser = function(req, res, next) {
 }
 
 exports.newReview = function(req, res, next) {
-  models.Review.create(req.body).then(function() {
-    res.redirect('/activities/' + req.body.name);
+  var activity = req.params.name;
+  models.findActivity(activity).then(function(data){
+    var activityId = data[0].id;
+    models.Review.create({
+      review: req.body.review,
+      rating: req.body.rating,
+      ActivityId: activityId
+    });
   });
 }
 
-exports.reviewsRedirect = function(req,res,next) {
-  res.redirect('/activities/:name');
-}
-
-exports.activitiesRedirect = function(req,res,next) {
-  res.redirect('/activities/:name');
-}
-
-exports.reviewListing = function(req, res, next) {
+/*exports.reviewListing = function(req, res, next) {
   var review = req.params.review;
-  console.log(name);
-  models.findReview(review).then(function(reviewPost){
-    res.render('view_activity', {reviewPost});
-  });
-}
+  console.log(review);
+  res.redirect('/activities/' + req.params.name);
+  }
+}*/
 
 exports.newActivity = function(req, res, next) {
   models.Activity.create(req.body).then(function() {
