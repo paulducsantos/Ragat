@@ -28,3 +28,14 @@ exports.newUser = function(req, res, next) {
   models.User.create(req.body);
   next();
 }
+
+exports.newReview = function(req, res, next) {
+  console.log(models.Review);
+  models.Review.create(req.body);
+  next();
+
+}
+
+exports.activitiesRedirect = function(req,res,next) {
+  res.redirect('/activities/:name');
+}

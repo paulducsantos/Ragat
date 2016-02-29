@@ -12,4 +12,6 @@ module.exports.routes =  function(app) {
 
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 
+  app.post('/reviews', renders.newReview, renders.activitiesRedirect);
+
 }
