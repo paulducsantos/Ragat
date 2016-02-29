@@ -14,8 +14,8 @@ app.set('views', __dirname + '/app/views');
 const PORT = process.env.PORT || 8080;
 
 require('dotenv').config();
-var sequelize = new Sequelize(process.env.JAWSDB_URL);
-// var sequelize = new Sequelize('Ragat_db', 'root');
+// var sequelize = new Sequelize(process.env.JAWSDB_URL);
+var sequelize = new Sequelize('Ragat_db', 'root');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/static', express.static('public'));

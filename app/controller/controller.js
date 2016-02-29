@@ -30,14 +30,26 @@ exports.newUser = function(req, res, next) {
 }
 
 exports.newReview = function(req, res, next) {
-  console.log(models.Review);
-  models.Review.create(req.body);
-  next();
+  models.Review.create(req.body).then(function() {
+    res.redirect('/activities/' + req.body.name);
+  });
+}
 
+exports.reviewsRedirect = function(req,res,next) {
+  res.redirect('/activities/:name');
 }
 
 exports.activitiesRedirect = function(req,res,next) {
   res.redirect('/activities/:name');
+}
+
+exports.reviewListing = function(req, res, next) {
+  var review = req.params.review;
+  console.log(name);
+  models.findReview(review).then(function(reviewPost){
+    res.render('view_activity', {reviewPost});
+  });
+}
 
 exports.newActivity = function(req, res, next) {
   models.Activity.create(req.body).then(function() {
@@ -50,5 +62,5 @@ exports.activityListing = function(req, res, next) {
   console.log(name);
   models.findActivity(name).then(function(data){
     res.render('view_activity', {data});
-  });;
+  });
 }
