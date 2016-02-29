@@ -96,18 +96,18 @@ User.hasMany(Review);
 
 var updateRating = function(activityId) {
   sequelize.query('SELECT AVG(rating) AS avg FROM Reviews WHERE ActivityId=' + activityId)
-    .then(function(data) {
-      var avg = Math.round(data[0][0].avg * 2)/2;
-      debugger;
-      Activity.update(
-        {
-          rating: avg
-        },
-        {
-          where: {id: activityId}
-        }
-      );
-    });
+  .then(function(data) {
+    var avg = Math.round(data[0][0].avg * 2)/2;
+    debugger;
+    Activity.update(
+      {
+        rating: avg
+      },
+      {
+        where: {id: activityId}
+      }
+    );
+  });
 }
 
 //SYNC SEQUALIZE SO MODEL CAN WORK
