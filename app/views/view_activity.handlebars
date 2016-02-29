@@ -3,6 +3,9 @@
     <div class="col m6 s12 offset-m3">
       <div class="title">
         <h4>{{ name }}</h4>
+        {{#each data}}
+        <h4>{{name}}</h4>
+        {{/each}}
       </div>
 <!--       <div class="review-area">
         <form action="#">
@@ -23,15 +26,16 @@
         <li>{{ review }}</li>
       {{/each}}
         <div>
-          <form method="POST" action="/reviews/{{ id }}">
+          <form method="POST" action="/addReview">
 <!--           <p class="range-field">
             <input type="range" id="test5" min="0" max="5" />
           </p> -->
           <textarea id="textarea1" class="materialize-textarea" length="500" name="review"></textarea>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Submit</button>
         </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+

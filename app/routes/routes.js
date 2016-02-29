@@ -8,10 +8,14 @@ module.exports.routes =  function(app) {
 
   app.get('/activities', renders.activities);
 
+  app.get('/activities/:name', renders.activityListing);
+
   app.get('/test', renders.test);
 
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 
-  app.post('/reviews', renders.newReview, renders.activitiesRedirect);
+  app.post('/addReview', renders.newReview);
+
+  app.post('/addActivity', renders.newActivity);
 
 }

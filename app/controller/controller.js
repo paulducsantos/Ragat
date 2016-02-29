@@ -38,4 +38,17 @@ exports.newReview = function(req, res, next) {
 
 exports.activitiesRedirect = function(req,res,next) {
   res.redirect('/activities/:name');
+
+exports.newActivity = function(req, res, next) {
+  models.Activity.create(req.body).then(function() {
+    res.redirect('/activities/' + req.body.name);
+  });
+}
+
+exports.activityListing = function(req, res, next) {
+  var name = req.params.name;
+  console.log(name);
+  models.findActivity(name).then(function(data){
+    res.render('view_activity', {data});
+  });;
 }
