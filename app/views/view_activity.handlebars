@@ -1,9 +1,36 @@
+<style>
+      body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+.ruNav {
+  background-color: #CC0033;
+}
+
+#aboutModal {
+  width: 100%;
+  background-color: #CC0033;
+}
+
+#filter-types {
+  display: flex;
+}
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col m6 s12 offset-m3">
             <div class="title">
                 {{#each data}}
-                <h4>{{ name }}</h4> {{/each}}
+                <h4>{{ name }}</h4> 
+                {{/each}}
             </div>
         </div>
     </div>
@@ -12,7 +39,7 @@
             <div class="reviews">
                 <form method="POST" action="/addReview">
                     <p class="range-field">
-                        <input type="range" id="test5" min="0" max="5" />
+                        <input type="range" id="test5" min="0" max="5" name="rating" />
                     </p>
                     <textarea id="textarea1" class="materialize-textarea" length="500" name="review"></textarea>
                     <button type="submit" class="btn-floating btn-large waves-effect waves-light red">submit</button>
@@ -26,3 +53,27 @@
         </div>
     </div>
 </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js"></script>
+    <script src="static/js/register.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+  $('.modal-trigger').leanModal();
+
+  $('.parallax').parallax();
+
+  $('#login').webuiPopover({url:'#login-form'});
+
+  $('select').material_select();
+
+});
+
+</script>

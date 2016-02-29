@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>RURated</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <link href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="static/css/activity-row.css">
-  <link rel="stylesheet" type="text/css" href="static/css/register.css">
-  <link rel="stylesheet" type="text/css" href="static/css/jumbotron.css">
-  <link rel="stylesheet" type="text/css" href="static/css/main.css">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <title>RURated</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/activity-row.css">
+    <link rel="stylesheet" type="text/css" href="static/css/register.css">
+    <link rel="stylesheet" type="text/css" href="static/css/jumbotron.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
 </head>
+
 <body>
-<!-- Navbar -->
-<nav class="ruNav">
-  <div class="container">
-  <div class="nav-wrapper row">
-    <a href="/" class="brand-logo">RURated</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href='/register'>Register</a></li>
-      <li><a id="login" href="#">Login</a></li>
-    </ul>
-  </div>
-  </div>
-</nav>
-<div id="login-form" class="webui-popover-content">
-  <form id="formLogin" class="col s12" method="POST" action="/check">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="username" type="text" class="validate" name="username">
-        <label for="username">Username</label>
-      </div>
+    <!-- Navbar -->
+    <nav class="ruNav">
+        <div class="container">
+            <div class="nav-wrapper row">
+                <a href="/" class="brand-logo">RURated</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href='/register'>Register</a></li>
+                    <li><a id="login" href="#">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="login-form" class="webui-popover-content">
+        <form id="formLogin" class="col s12" method="POST" action="/check">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" type="text" class="validate" name="username">
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" name="password">
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit" class="waves-effect waves-light btn">Submit</button>
+            </div>
+        </form>
     </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="password" type="password" class="validate" name="password">
-        <label for="password">Password</label>
-      </div>
-      <button type="submit" class="waves-effect waves-light btn">Submit</button>
+    <main>
+        {{{ body }}}
+    </main>
+    <!-- Modal Trigger -->
+    <footer class="page-footer modal-trigger btn" id="aboutModal" href="#modal1">
+    </footer>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4>Created By</h4>
+            <p>Paul Santos</p>
+        </div>
     </div>
-  </form>
-</div>
-<main>
-  {{{ body }}}
-</main>
-<!-- Modal Trigger -->
-<footer class="page-footer modal-trigger btn" id="aboutModal" href="#modal1">
-</footer>
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Created By</h4>
-        <p>Paul Santos</p>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-  <script src="static/js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
-  <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-  <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js"></script>
-  <script src="static/js/register.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js"></script>
+    <script src="static/js/register.js"></script>
 </body>
+
 </html>
