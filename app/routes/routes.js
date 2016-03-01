@@ -1,6 +1,22 @@
 var renders = require('../controller/controller.js')
+var passport      = require('passport');
+var passportLocal     = require('passport-local');
+var models = require('../model/model.js');
+var bcrypt            = require('bcryptjs');
+var session = require('express-session');
 
 module.exports.routes =  function(app) {
+
+  app.use(require('express-session')({
+    secret: 'eatmyshorts',
+    resave: true,
+    saveUninitialized: true,
+    cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }, // 4 hours
+  }));
+
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.get('/', renders.home);
 
@@ -16,10 +32,49 @@ module.exports.routes =  function(app) {
 
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 
-  app.post('/login', renders.login);
+  app.post('/login',  
+    passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/?msg=Login failed'
+    })
+    );
+  
 
   app.post('/activities/:name', renders.newReview);
 
   app.post('/addActivity', renders.newActivity);
 
+
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  passport.deserializeUser(function(id, done) {
+    done(null, { id: id, username: id })
+  });
+  // use method as callback when being authenticated
+  passport.use(new passportLocal.Strategy(function(username, password, done) {
+    // check the password in database
+    debugger;
+    models.User.findOne({
+      where: {
+        username: username
+      }
+    }).then(function(user) {
+        // check the password against hash
+        if(user){
+          bcrypt.compare(password, user.dataValues.userPassword, function(err, user) {
+            if (user) {
+                  // if password is valid -- authenticate the user with cookie
+                  done(null, { id: username, username: username });
+                } else{
+                  done(null, null);
+                }
+              });
+        } else {
+          done(null, null);
+        }
+      });
+
+  }));
 }
