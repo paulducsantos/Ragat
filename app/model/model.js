@@ -91,6 +91,15 @@ var findActivity = function(activityName) {
   });
 }
 
+var findReviews = function(activityId) {
+  return Review.findAll({
+    where: {
+      ActivityId: activityId
+    }
+  });
+}
+
+
 Activity.hasMany(Review);
 User.hasMany(Review);
 
@@ -119,3 +128,4 @@ exports.Activity = Activity;
 exports.Review = Review;
 exports.findActivity = findActivity;
 exports.updateRating = updateRating;
+exports.findReviews = findReviews;

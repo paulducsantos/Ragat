@@ -28,8 +28,8 @@
     <div class="row">
         <div class="col m6 s12 offset-m3">
             <div class="title">
-                {{#each data}}
-                <h4>{{ name }}</h4> 
+                {{#each activity}}
+                <h4 id="title">{{ name }}</h4> 
                 {{/each}}
             </div>
         </div>
@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col m6 s12 offset-m3">
             <div class="reviews">
-                <form method="POST" action="/addReview">
+                <form id="formURL" method="POST">
                     <p class="range-field">
                         <input type="range" id="test5" min="0" max="5" name="rating" />
                     </p>
@@ -45,7 +45,7 @@
                     <button type="submit" class="btn-floating btn-large waves-effect waves-light red">submit</button>
                 </form>
                 <ul>
-                    {{#each reviewData}}
+                    {{#each reviews}}
                     <li>{{ review }}</li>
                     {{/each}}
                 </ul>
@@ -73,6 +73,12 @@ $(document).ready(function(){
   $('#login').webuiPopover({url:'#login-form'});
 
   $('select').material_select();
+
+  var title = $('#title').text().toLowerCase();
+
+  $("#formURL").attr("action", "/activities/" + title);
+
+  console.log(title);
 
 });
 
