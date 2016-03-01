@@ -12,7 +12,11 @@ module.exports.routes =  function(app) {
 
   app.get('/test', renders.test);
 
+  app.get('/dashboard', renders.checkAuth, renders.dashboard);
+
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
+
+  app.post('/login', renders.login);
 
   app.post('/activities/:name', renders.newReview);
 
