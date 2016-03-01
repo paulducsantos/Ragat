@@ -43,8 +43,12 @@
     </div>
     <div class="col m9">
       <div class="activity-content">
-        <h2>hello</h2>
-        <p>asdfasdfsdalkjfhlakdshflkadshfklashlkfahsdlkhfalskdjhf askdfhklsadjhf aslkdfjhlkas fdlkdsahf asdjg fjagsdfk hagsdk fdsahg fkjasdgf sdfljsadjf gasdjkfglsadjgfkjadsgfkjsadgfjksdagfkjgsadkjfhg sdlgfajsgflsdagfja gsdkj</p>
+      <h4>Activities</h4>
+      <ul>
+      {{#each activity}}
+        <li>{{ name }}</li>
+      {{/each}}
+      </ul>
       </div>
     </div>
   </div>

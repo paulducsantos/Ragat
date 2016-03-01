@@ -64,7 +64,7 @@ exports.activityListing = function(req, res, next) {
     }
     models.findReviews(activityID).then(function(activityReviews){
       pageData.reviews = activityReviews
-      res.render('view_activity', pageData)
+      res.render('view_activity', pageData);
     });
   });
 }
