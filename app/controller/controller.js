@@ -29,6 +29,25 @@ exports.newUser = function(req, res, next) {
   next();
 }
 
+exports.newReview = function(req, res, next) {
+  var activity = req.params.name;
+  models.findActivity(activity).then(function(data){
+    var activityId = data[0].id;
+    models.Review.create({
+      review: req.body.review,
+      rating: req.body.rating,
+      ActivityId: activityId
+    });
+    res.redirect('/activities/' + activity);
+  });
+}
+
+
+exports.activitiesRedirect = function(req,res,next) {
+  res.redirect('/activities/:name');
+}
+
+
 exports.newActivity = function(req, res, next) {
   models.Activity.create(req.body).then(function() {
     res.redirect('/activities/' + req.body.name);
@@ -38,7 +57,14 @@ exports.newActivity = function(req, res, next) {
 exports.activityListing = function(req, res, next) {
   var name = req.params.name;
   models.findActivity(name).then(function(data){
-    models.updateRating(data[0].id);
-    res.render('view_activity', {data});
-  });;
+    var activityID = data[0].id;
+    models.updateRating(activityID);
+    var pageData = {
+      activity: data
+    }
+    models.findReviews(activityID).then(function(activityReviews){
+      pageData.reviews = activityReviews
+      res.render('view_activity', pageData)
+    });
+  });
 }

@@ -2,8 +2,8 @@ var bcrypt            = require('bcryptjs');//REQUIRE FOR THE HOOK
 var Sequelize         = require('sequelize');
 
 require('dotenv').config();
-var sequelize = new Sequelize(process.env.JAWSDB_URL);
-// var sequelize = new Sequelize('Ragat_db', 'root');
+// var sequelize = new Sequelize(process.env.JAWSDB_URL);
+var sequelize = new Sequelize('Ragat_db', 'root');
 
 
 //MODEL FOR USERS
@@ -91,6 +91,15 @@ var findActivity = function(activityName) {
   });
 }
 
+var findReviews = function(activityId) {
+  return Review.findAll({
+    where: {
+      ActivityId: activityId
+    }
+  });
+}
+
+
 Activity.hasMany(Review);
 User.hasMany(Review);
 
@@ -119,3 +128,4 @@ exports.Activity = Activity;
 exports.Review = Review;
 exports.findActivity = findActivity;
 exports.updateRating = updateRating;
+exports.findReviews = findReviews;
