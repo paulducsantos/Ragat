@@ -1,5 +1,13 @@
 var models = require('../model/model.js');
 
+exports.checkAuth = function(req, res, next) {
+   if (req.isAuthenticated()) {
+     next();
+   } else {
+     res.redirect('/');
+   }
+ }
+
 /* ============================================================================================
     RENDERS
   ==================================================================================*/
@@ -13,6 +21,10 @@ exports.homeRedirect = function(req, res, next) {
 
 exports.register = function(req, res, next) {
   res.render('register');
+}
+
+exports.dashboard = function(req, res, next) {
+  res.send('hello');
 }
 
 exports.activities = function(req, res, next) {
