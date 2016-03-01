@@ -91,6 +91,10 @@ var findActivity = function(activityName) {
   });
 }
 
+var findAllActivity = function(){
+  return Activity.findAll();
+}
+
 var findReviews = function(activityId) {
   return Review.findAll({
     where: {
@@ -129,3 +133,4 @@ exports.Review = Review;
 exports.findActivity = findActivity;
 exports.updateRating = updateRating;
 exports.findReviews = findReviews;
+exports.findAllActivity = findAllActivity;
