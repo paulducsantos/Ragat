@@ -50,7 +50,7 @@
         </div>
         {{#each activities}}
         <div class="row">
-          <div class="col m4 url" id="title"><a href="''">{{ name }}</a></div>
+          <div class="col m4 url" id="title"><a href="activities/{{name}}">{{ name }}</a></div>
           <div class="col m3">{{ rating }}</div>
         </div>
         {{/each}}
@@ -58,16 +58,4 @@
     </div>
   </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-
-<script type="text/javascript">
-
-  $(document).ready(function(){
-    var title = $("#title").text();
-
-    console.log(title);
-
-    $("#url").attr("href", "/activities/" + title);
-  });
 </script>
