@@ -13,8 +13,11 @@ exports.checkAuth = function(req, res, next) {
     ==================================================================================*/
     exports.home = function(req, res, next) {
       models.findTopActivities().then(function(topActivities){
+        models.findLatestBuzz().then(function(topBuzz){
         res.render('home',{
-          topActivities: topActivities
+          topActivities: topActivities,
+          topBuzz: topBuzz
+        })
         })
       })
     }
