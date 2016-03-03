@@ -77,6 +77,11 @@ exports.checkAuth = function(req, res, next) {
       });
     }
 
+    exports.destroyReview = function(req, res, next) {
+      models.deleteReview(req.params.id);
+      res.json({});
+    }
+
     exports.activityListing = function(req, res, next) {
       var name = req.params.name;
       models.findActivity(name).then(function(data){

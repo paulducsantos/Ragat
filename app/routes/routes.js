@@ -30,6 +30,8 @@ module.exports.routes =  function(app) {
 
   app.get('/dashboard', renders.checkAuth, renders.dashboard);
 
+  app.delete('/deleteReview/:id', renders.destroyReview);
+
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 
   app.post('/login',  

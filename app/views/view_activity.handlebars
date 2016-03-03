@@ -20,7 +20,18 @@
         </form>
         <ul>
           {{#each reviews}}
-          <li>{{ review }}</li>
+          <li class="review">
+            <div class="review-content">
+              <h5 class="username-review">USERNAME</h5>
+              <p name="{{id}}">{{ review }}</p>
+              <div class="deleteEdit">
+                <i class="fa fa-pencil editBtn"></i>
+                <a href=""><i class="material-icons deleteBtn" data-id="{{id}}">close</i></a>
+              </div>
+              
+              <div class="divider"></div>
+            </div>
+          </li>
           {{/each}}
         </ul>
       </div>
