@@ -12,7 +12,11 @@ exports.checkAuth = function(req, res, next) {
     RENDERS
     ==================================================================================*/
     exports.home = function(req, res, next) {
-      res.render('home');
+      models.findTopActivities().then(function(topActivities){
+        res.render('home',{
+          topActivities: topActivities
+        })
+      })
     }
 
     exports.homeRedirect = function(req, res, next) {
