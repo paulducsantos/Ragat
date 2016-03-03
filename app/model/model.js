@@ -64,6 +64,18 @@ var Activity = sequelize.define('Activity', {
     validate: {
       isIn: [['american', 'japanese', 'korean', 'italian', 'indian', 'chinese', 'filipino', 'dining hall', 'mexican', 'ethiopian', 'grease truck', 'middle-eastern']]
     }
+  },
+  location: {
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true
+    }
+  },
+  descritption: {
+    type: Sequelize.TEXT,
+    validate: {
+      notEmpty: true
+    }
   }
 });
 
