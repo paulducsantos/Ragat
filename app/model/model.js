@@ -104,6 +104,19 @@ var findReviews = function(activityId) {
   });
 }
 
+var findTopActivities = function(){
+  return Activity.findAll({
+    order:'rating DESC',
+    limit: 3
+  })
+};
+
+var findLatestBuzz = function(){
+  return Activity.findAll({
+    order:'updatedAt DESC',
+    limit: 3
+  })
+};
 
 Activity.hasMany(Review);
 User.hasMany(Review);
@@ -141,5 +154,7 @@ exports.Review = Review;
 exports.findActivity = findActivity;
 exports.updateRating = updateRating;
 exports.findReviews = findReviews;
-exports.deleteReview = deleteReview;
 exports.findAllActivity = findAllActivity;
+exports.findTopActivities = findTopActivities;
+exports.findLatestBuzz = findLatestBuzz;
+exports.deleteReview = deleteReview;
