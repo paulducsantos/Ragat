@@ -16,7 +16,6 @@ $(document).ready(function(){
       url: '/deleteReview/' + id,
       type: 'DELETE',
       success: function(result) {
-        console.log(that.parent(".review"));
         that.closest(".review").fadeOut();
       },
       error: function (xhr, ajaxOptions, thrownError) {
