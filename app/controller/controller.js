@@ -80,3 +80,12 @@ exports.activityListing = function(req, res, next) {
     });
   });
 }
+
+exports.refresh = function(req, res, next) {
+
+}
+
+exports.destroyReview = function(req, res, next) {
+  models.deleteReview(req.params.id);
+  res.json({});
+}

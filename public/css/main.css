@@ -1,13 +1,13 @@
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    font-family: 'Open Sans Condensed', sans-serif;
-  }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 
 .ruNav {
   background-color: #CC0033;
@@ -22,3 +22,20 @@
   display: flex;
 }
 
+.review-content {
+  position: relative;
+}
+
+.deleteEdit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+/*.deleteBtn {
+  justify-content: space-around;
+  align-content: center;
+}*/
