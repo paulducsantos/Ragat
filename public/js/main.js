@@ -40,14 +40,22 @@ $(document).ready(function(){
     var id = $(this).data("id");
     var that = $(this);
     var reviewContent = $(this).siblings(".review-text").val();
+    var reviewedBy = $(this).data("reviewedby");
     $.ajax({
       url: '/updateReview/' + id,
       type: 'POST',
       data: {review: reviewContent,
-              id: id},
+              id: id,
+              UserId: reviewedBy},
       success: function(result) {
-        that.siblings(".review-text").replaceWith("<p class='review-text'>" + reviewContent + "</p>");
-        that.hide();
+        console.log(result);
+        if(result.err) {
+          that.hide();
+          alert(result.err);
+        } else {
+          that.siblings(".review-text").replaceWith("<p class='review-text'>" + reviewContent + "</p>");
+          that.hide();
+        }
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log(thrownError);
@@ -57,6 +65,13 @@ $(document).ready(function(){
     });
   });
 
+  $(".deleteEdit").hide();
+  $(".deleteEdit").each(function() {
+    if(parseInt($("#userID").text()) === $(this).siblings(".username-review").data("userid")) {
+      $(this).show();
+    }
+  });
+  
   $(".animsition").animsition({
     inClass: 'fade-in',
     outClass: 'fade-out',

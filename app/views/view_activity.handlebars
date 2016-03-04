@@ -1,3 +1,4 @@
+<pre id="userID" style="display: none">{{userID}}</pre>
 <div class="container">
   <div class="row">
     <div class="col m6 s12 offset-m3">
@@ -22,14 +23,13 @@
           {{#each reviews}}
           <li class="review">
             <div class="review-content">
-              <h5 class="username-review">USERNAME</h5>
+              <h5 class="username-review" data-userid={{UserId}}>USERNAME</h5>
               <p name="{{id}}" class="review-text">{{ review }}</p>
-              <a class="waves-effect waves-light btn updateBtn" data-id={{id}}>Update Review!</a>
+              <a class="waves-effect waves-light btn updateBtn" data-id={{id}} data-reviewedby={{UserId}}>Update Review!</a>
               <div class="deleteEdit">
                 <i class="fa fa-pencil editBtn"></i>
-                <a href=""><i class="material-icons deleteBtn" data-id="{{id}}">close</i></a>
+                <a href=""><i class="material-icons deleteBtn" data-id="{{id}}" data-reviewedby={{UserId}}>close</i></a>
               </div>
-              
               <div class="divider"></div>
             </div>
           </li>

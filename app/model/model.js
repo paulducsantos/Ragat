@@ -144,13 +144,14 @@ var deleteReview = function(reviewId) {
   });
 }
 
-var updateReview = function(reviewData) {
+var updateReview = function(reviewData, user) {
   Review.update({
     review: reviewData.review//need to pass the review text
   },
   {
     where: {
-      id: reviewData.id
+      id: reviewData.id,
+      UserId: user
     }
   });
 }

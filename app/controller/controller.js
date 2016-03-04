@@ -59,7 +59,8 @@ exports.checkAuth = function(req, res, next) {
         models.Review.create({
           review: req.body.review,
           rating: req.body.rating,
-          ActivityId: activityId
+          ActivityId: activityId,
+          UserId: req.user.id
         });
         res.redirect('/activities/' + activity);
       });
@@ -83,8 +84,12 @@ exports.checkAuth = function(req, res, next) {
     }
 
     exports.updateReview = function(req, res, next) {
-      models.updateReview(req.body);
-      res.json({});
+      if(parseInt(req.body.UserId) === req.user.id) {
+        models.updateReview(req.body, req.user.id);
+        res.json({err: false});
+      } else {
+        res.json({err: "You can't edit this post"});
+      }
     }
 
     exports.activityListing = function(req, res, next) {
@@ -96,7 +101,11 @@ exports.checkAuth = function(req, res, next) {
           activity: data
         }
         models.findReviews(activityID).then(function(activityReviews){
-          pageData.reviews = activityReviews
+          pageData.reviews = activityReviews;
+          if(req.isAuthenticated()) {
+            pageData.userID = req.user.id;  
+            pageData.loggedIn = true;  
+          }
           res.render('view_activity', pageData);
         });
       });
