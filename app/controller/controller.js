@@ -59,7 +59,8 @@ exports.checkAuth = function(req, res, next) {
         models.Review.create({
           review: req.body.review,
           rating: req.body.rating,
-          ActivityId: activityId
+          ActivityId: activityId,
+          UserId: req.user.id
         });
         res.redirect('/activities/' + activity);
       });
@@ -96,7 +97,13 @@ exports.checkAuth = function(req, res, next) {
           activity: data
         }
         models.findReviews(activityID).then(function(activityReviews){
-          pageData.reviews = activityReviews
+          pageData.reviews = activityReviews;
+          debugger;
+          if(req.isAuthenticated()) {
+            pageData.userID = req.user.id;  
+            pageData.loggedIn = true;  
+          }
+          console.log(pageData);
           res.render('view_activity', pageData);
         });
       });

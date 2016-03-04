@@ -57,6 +57,14 @@ $(document).ready(function(){
     });
   });
 
+  $(".deleteEdit").hide();
+  $(".deleteEdit").each(function() {
+    if(parseInt($("#userID").text()) === $(this).siblings(".username-review").data("userid")) {
+      $(this).show();
+    }
+  });
+  
+
 
 
 });
