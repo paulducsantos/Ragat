@@ -23,7 +23,8 @@
           <li class="review">
             <div class="review-content">
               <h5 class="username-review">USERNAME</h5>
-              <p name="{{id}}">{{ review }}</p>
+              <p name="{{id}}" class="review-text">{{ review }}</p>
+              <a class="waves-effect waves-light btn updateBtn" data-id={{id}}>Update Review!</a>
               <div class="deleteEdit">
                 <i class="fa fa-pencil editBtn"></i>
                 <a href=""><i class="material-icons deleteBtn" data-id="{{id}}">close</i></a>
