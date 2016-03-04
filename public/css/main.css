@@ -2,7 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Pontano Sans', sans-serif;
 }
 
 main {
@@ -33,6 +33,27 @@ main {
   display: flex;
   justify-content: space-around;
   align-content: center;
+}
+
+.brand-logo {
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.nav-link {
+  text-transform: lowercase;
+}
+
+.home-heading {
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 3px;
+  font-size: 72px;
+}
+
+.home-subheading {
+  text-transform: lowercase;
+  font-size: 36px;
+  font-style: italic;
 }
 
 /*.deleteBtn {

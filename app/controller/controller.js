@@ -84,8 +84,12 @@ exports.checkAuth = function(req, res, next) {
     }
 
     exports.updateReview = function(req, res, next) {
-      models.updateReview(req.body);
-      res.json({});
+      if(parseInt(req.body.UserId) === req.user.id) {
+        models.updateReview(req.body, req.user.id);
+        res.json({err: false});
+      } else {
+        res.json({err: "You can't edit this post"});
+      }
     }
 
     exports.activityListing = function(req, res, next) {
@@ -98,12 +102,10 @@ exports.checkAuth = function(req, res, next) {
         }
         models.findReviews(activityID).then(function(activityReviews){
           pageData.reviews = activityReviews;
-          debugger;
           if(req.isAuthenticated()) {
             pageData.userID = req.user.id;  
             pageData.loggedIn = true;  
           }
-          console.log(pageData);
           res.render('view_activity', pageData);
         });
       });
