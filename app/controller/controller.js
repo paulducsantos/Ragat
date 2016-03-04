@@ -12,7 +12,14 @@ exports.checkAuth = function(req, res, next) {
     RENDERS
     ==================================================================================*/
     exports.home = function(req, res, next) {
-      res.render('home');
+      models.findTopActivities().then(function(topActivities){
+        models.findLatestBuzz().then(function(topBuzz){
+        res.render('home',{
+          topActivities: topActivities,
+          topBuzz: topBuzz
+        })
+        })
+      })
     }
 
     exports.homeRedirect = function(req, res, next) {
