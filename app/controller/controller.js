@@ -82,6 +82,11 @@ exports.checkAuth = function(req, res, next) {
       res.json({});
     }
 
+    exports.updateReview = function(req, res, next) {
+      models.updateReview(req.body);
+      res.json({});
+    }
+
     exports.activityListing = function(req, res, next) {
       var name = req.params.name;
       models.findActivity(name).then(function(data){

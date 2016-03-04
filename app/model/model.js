@@ -144,6 +144,17 @@ var deleteReview = function(reviewId) {
   });
 }
 
+var updateReview = function(reviewData) {
+  Review.update({
+    review: reviewData.review//need to pass the review text
+  },
+  {
+    where: {
+      id: reviewData.id
+    }
+  });
+}
+
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
 
@@ -154,6 +165,8 @@ exports.Review = Review;
 exports.findActivity = findActivity;
 exports.updateRating = updateRating;
 exports.findReviews = findReviews;
+exports.deleteReview = deleteReview;
+exports.updateReview = updateReview;
 exports.findAllActivity = findAllActivity;
 exports.findTopActivities = findTopActivities;
 exports.findLatestBuzz = findLatestBuzz;
