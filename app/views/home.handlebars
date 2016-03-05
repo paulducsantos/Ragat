@@ -58,10 +58,28 @@
             </select>
             <label>Type of Food</label>
           </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate" name="location">
+            <label for="last_name">Where is this Place?</label>
+          </div>
         </div>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea" length="200" name="description"></textarea>
+                <label for="textarea1">Describe the Spot</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+        <div class="col offset-s6">
         <a href="" class=" modal-action modal-close waves-effect waves-green btn-flat"><button class="btn waves-effect waves-light red darken-4 submit-btn" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button></a>
+        </div>
+        </div>
       </form>
     </div>
   </div>
@@ -100,17 +118,17 @@
       <h3 class="section-heading-text">Latest Buzz</h3>
       <div class="row">
         {{#each topBuzz}}
-        <div class="col m4">
-        <a href="/activities/{{name}}">  
+        <div class="col m4">  
           <div class="card red darken-4 card-div">
-            <div class="card-content white-text">
-              <span class="card-title">{{name}}</span>
-              <p>{{rating}}</p>
-            </div>
-            <div class="card-action">
-            </div>
+            <a href="/activities/{{name}}">
+              <div class="card-content white-text">
+                <span class="card-title">{{name}}</span>
+                <p>{{rating}}</p>
+              </div>
+              <div class="card-action">
+              </div>
+            </a>
           </div>
-          </a>
         </div>
         {{/each}}
       </div>
@@ -125,16 +143,16 @@
       <div class="row">
         {{#each topActivities}}
         <div class="col m4">
-        <a href="/activities/{{name}}">
           <div class="card red darken-4 card-div">
-            <div class="card-content white-text">
-              <span class="card-title">{{name}}</span>
-              <p>{{rating}}</p>
-            </div>
-            <div class="card-action">
-            </div>
+            <a href="/activities/{{name}}">
+              <div class="card-content white-text">
+                <span class="card-title">{{name}}</span>
+                <p>{{rating}}</p>
+              </div>
+              <div class="card-action">
+              </div>
+            </a>
           </div>
-
         </div>
         {{/each}}
       </div>

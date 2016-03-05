@@ -114,6 +114,7 @@ exports.checkAuth = function(req, res, next) {
 
 
     exports.newActivity = function(req, res, next) {
+      debugger;
       models.Activity.create(req.body).then(function() {
         res.redirect('/activities/' + req.body.name);
       }).catch(function(error) {
