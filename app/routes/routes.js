@@ -38,7 +38,7 @@ module.exports.routes =  function(app) {
 
   app.post('/login',  
     passport.authenticate('local', {
-      successRedirect: '/dashboard',
+      successRedirect: '/',
       failureRedirect: '/?msg=Login failed'
     })
     );
@@ -47,6 +47,12 @@ module.exports.routes =  function(app) {
   app.post('/activities/:name', renders.newReview);
 
   app.post('/addActivity', renders.newActivity);
+
+  app.get('/logout', function (req, res){
+    req.session.destroy(function (err) {
+      res.redirect('/');
+    });
+  });
 
 /*===============================================================
   HIT MY API WITH THESE ROUTES
