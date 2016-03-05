@@ -95,6 +95,4 @@ $(document).ready(function(){
     transition: function(url){ window.location.href = url; }
   });
 
-
-
 });
