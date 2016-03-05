@@ -59,6 +59,7 @@ exports.checkAuth = function(req, res, next) {
         models.Review.create({
           review: req.body.review,
           rating: req.body.rating,
+          reviewedBy: req.user.username,
           ActivityId: activityId,
           UserId: req.user.id
         });
