@@ -1,0 +1,32 @@
+  <nav class="ruNav">
+    <div class="container">
+      <div class="nav-wrapper row">
+        <a href="/" class="brand-logo">RURated</a>
+        <ul class="right hide-on-med-and-down">
+        {{#if isAuthenticated}}
+          <li><a id="logout" href="#">Logout</a></li>
+        {{else}}
+          <li><a href='/register'>Register</a></li>
+          <li><a id="login" href="#">Login</a></li>
+        {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="login-form" class="webui-popover-content">
+    <form id="formLogin" class="col s12" method="POST" action="/login">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="text" class="validate" name="username">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" name="password">
+          <label for="password">Password</label>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn">Submit</button>
+      </div>
+    </form>
+  </div>

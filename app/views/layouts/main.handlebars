@@ -17,40 +17,14 @@
   <link href='https://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+  <link rel='shortcut icon' href='../static/images/favicon.ico' type='image/x-icon'/ >
 </head>
-
+{{>navbar}}
 <body>
-  <!-- Navbar -->
-  <div id="fakeloader"></div> {{!-- include fakeLoader --}}
-  <nav class="ruNav red darken-4">
-    <div class="container">
-      <div class="nav-wrapper row">
-        <a href="/" class="brand-logo">RURated</a>
-        <ul class="right hide-on-med-and-down nav-link">
-          <li><a href='/register' class="animsition-link">Register</a></li>
-          <li><a id="login" href="#">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div id="login-form" class="webui-popover-content">
-    <form id="formLogin" class="col s12" method="POST" action="/login">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="username" type="text" class="validate" name="username">
-          <label for="username">Username</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate" name="password">
-          <label for="password">Password</label>
-        </div>
-        <button type="submit" class="waves-effect waves-light red darken-4 btn submit-btn">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
+  <main>
+
+    <!-- Navbar -->
+    <div id="fakeloader"></div> {{!-- include fakeLoader --}}
   <main class="animsition">
     {{{ body }}}
   </main>
