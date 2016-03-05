@@ -212,7 +212,7 @@ var updateReview = function(reviewData, user) {
 sequelize.sync();
 
 /*===============================================================
-  EXPORTS
+  EXPORT THESE FOR USE IN THE CONTROLLER
 ===========================================================*/
 exports.User = User;
 exports.Activity = Activity;
