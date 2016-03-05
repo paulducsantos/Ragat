@@ -20,8 +20,9 @@ var sequelize = new Sequelize(process.env.JAWSDB_URL);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/static', express.static('public'));
 app.engine('handlebars', expressHandlebars({
-  defaultLayout: __dirname + '/app/views/layouts/main.handlebars',
-  layoutsDir: __dirname + '/app/views/layouts'}));
+                                    defaultLayout: __dirname + '/app/views/layouts/main.handlebars',
+                                    layoutsDir: __dirname + '/app/views/layouts',
+                                    partialsDir: __dirname + '/app/views/partials'}));
 app.set('view engine', 'handlebars');
 
 routes.routes(app);
