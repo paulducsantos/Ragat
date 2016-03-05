@@ -66,6 +66,7 @@ exports.checkAuth = function(req, res, next) {
     exports.filterActivitiesByRating = function(req, res, next) {
       debugger;
       if(req.body.foodType) {
+        debugger;
         models.findByRatingAndFood(req.body).then(function(activities) {
           res.json({activities});
         });

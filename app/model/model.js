@@ -162,7 +162,7 @@ var findByRatingAndFood = function(filter) {
   return Activity.findAll({
     where: {
       activityType: 'food',
-      // rating: filter.ratings,
+      rating: filter.ratings,
       foodType: filter.foodType
     }
   });

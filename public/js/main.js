@@ -93,7 +93,6 @@ $(document).ready(function(){
 ===========================================================*/
   $("#filterType").on("change", function(e) {
     e.preventDefault();
-    console.log($("#filterType").val() === "food");
     if($("#filterType").val() === "food" || $("#filterType").val() === "all") {
       $(".food-type-container").show();
     } else {
@@ -141,12 +140,23 @@ $(document).ready(function(){
             rating_value.push($(this).val());
         }
     });
+    var foodtype_value = [];
+    $(".food-type").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            foodtype_value.push($(this).val());
+        }
+    });
+    if(rating_value.length === 0) {
+      rating_value = [1,2,3,4,5];
+    }
     $.ajax({
       url: '/filterRating',
       type: 'POST',
       data: {
               ratings: rating_value,
-              filterType: $("#filterType").val()
+              filterType: $("#filterType").val(),
+              foodType: foodtype_value
             },
       success: function(result) {
         $(".listOfActivities").remove();
@@ -186,7 +196,6 @@ $(document).ready(function(){
               filterType: $("#filterType").val()},
       success: function(result) {
         $(".listOfActivities").remove();
-        console.log(result);
         filterSuccessHandler(result);
       },
       error: function (xhr, ajaxOptions, thrownError) {
