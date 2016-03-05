@@ -16,10 +16,11 @@ exports.checkAuth = function(req, res, next) {
         models.findLatestBuzz().then(function(topBuzz){
         res.render('home',{
           topActivities: topActivities,
-          topBuzz: topBuzz
-        })
-        })
-      })
+          topBuzz: topBuzz,
+          isAuthenticated: req.isAuthenticated()
+        });
+        });
+      });
     }
 
     exports.homeRedirect = function(req, res, next) {
@@ -38,6 +39,15 @@ exports.checkAuth = function(req, res, next) {
       models.findAllActivity().then(function(activities){
         res.render('activities',{
           activities: activities
+        })
+      })
+    }
+
+    exports.filterActivitiesByType = function(req, res, next) {
+      models.findActivitiesOfType(req.body.filterType).then(function(activities){
+        res.render('filteredActivities',{
+          activities: activities,
+          activeFilter: req.body.filterType
         })
       })
     }
@@ -76,6 +86,8 @@ exports.checkAuth = function(req, res, next) {
     exports.newActivity = function(req, res, next) {
       models.Activity.create(req.body).then(function() {
         res.redirect('/activities/' + req.body.name);
+      }).catch(function(error) {
+        res.redirect('/activities/' + req.body.name);
       });
     }
 
@@ -102,10 +114,12 @@ exports.checkAuth = function(req, res, next) {
           activity: data
         }
         models.findReviews(activityID).then(function(activityReviews){
+          debugger;
           pageData.reviews = activityReviews;
           if(req.isAuthenticated()) {
             pageData.userID = req.user.id;  
-            pageData.loggedIn = true;  
+            pageData.loggedIn = true;
+            pageData.isAuthenticated = req.isAuthenticated();
           }
           res.render('view_activity', pageData);
         });

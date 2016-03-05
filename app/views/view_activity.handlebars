@@ -12,6 +12,7 @@
   <div class="row">
     <div class="col m6 s12 offset-m3">
       <div class="reviews">
+      {{#if isAuthenticated}}
         <form method="POST">
           <p class="range-field">
             <input type="range" id="test5" min="0" max="5" name="rating" />
@@ -19,6 +20,7 @@
           <textarea id="textarea1" class="materialize-textarea" length="500" name="review"></textarea>
           <button type="submit" class="btn-floating btn-large waves-effect waves-light red">submit</button>
         </form>
+      {{/if}}
         <ul>
           {{#each reviews}}
           <li class="review">

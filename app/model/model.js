@@ -102,6 +102,14 @@ var findAllActivity = function(){
   return Activity.findAll();
 }
 
+var findActivitiesOfType = function(type) {
+  return Activity.findAll({
+    where: {
+      activityType: type
+    }
+  });
+}
+
 var findReviews = function(activityId) {
   return Review.findAll({
     where: {
@@ -178,3 +186,4 @@ exports.findAllActivity = findAllActivity;
 exports.findTopActivities = findTopActivities;
 exports.findLatestBuzz = findLatestBuzz;
 exports.deleteReview = deleteReview;
+exports.findActivitiesOfType = findActivitiesOfType;

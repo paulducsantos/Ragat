@@ -24,6 +24,8 @@ module.exports.routes =  function(app) {
 
   app.get('/activities', renders.activities);
 
+  app.post('/filterActivities', renders.filterActivitiesByType);
+
   app.get('/activities/:name', renders.activityListing);
 
   app.get('/test', renders.test);
