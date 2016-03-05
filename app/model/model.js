@@ -90,6 +90,15 @@ var Review = sequelize.define('Review', {
   }
 });
 
+/*===============================================================
+  MODEL ASSOCIATION
+===========================================================*/
+Activity.hasMany(Review);
+User.hasMany(Review);
+
+/*===============================================================
+  QUERIES
+===========================================================*/
 var findActivity = function(activityName) {
   return Activity.findAll({
     where: {
@@ -132,13 +141,42 @@ var findLatestBuzz = function(){
   })
 };
 
-Activity.hasMany(Review);
-User.hasMany(Review);
+var findByRatingAll = function(ratings) {
+  return Activity.findAll({
+    where: {
+      rating: ratings
+    }
+  });
+}
+
+var findByRating = function(ratings, type) {
+  return Activity.findAll({
+    where: {
+      activityType: type,
+      rating: ratings
+    }
+  });
+}
+
+var findByRatingAndFood = function(filter) {
+  return Activity.findAll({
+    where: {
+      activityType: 'food',
+      rating: filter.ratings,
+      foodType: filter.foodType
+    }
+  });
+}
+
+var findFoodTypes = function() {
+  return sequelize.query('SELECT DISTINCT foodType FROM `Activities` WHERE foodType IS NOT NULL');
+}
 
 var updateRating = function(activityId) {
   sequelize.query('SELECT AVG(rating) AS avg FROM Reviews WHERE ActivityId=' + activityId)
   .then(function(data) {
-    var avg = Math.round(data[0][0].avg * 2)/2;
+    // var avg = Math.round(data[0][0].avg * 2)/2;
+    var avg = Math.round(data[0][0].avg);
     Activity.update(
       {
         rating: avg
@@ -173,7 +211,9 @@ var updateReview = function(reviewData, user) {
 //SYNC SEQUALIZE SO MODEL CAN WORK
 sequelize.sync();
 
-//EXPORTS
+/*===============================================================
+  EXPORTS
+===========================================================*/
 exports.User = User;
 exports.Activity = Activity;
 exports.Review = Review;
@@ -187,3 +227,7 @@ exports.findTopActivities = findTopActivities;
 exports.findLatestBuzz = findLatestBuzz;
 exports.deleteReview = deleteReview;
 exports.findActivitiesOfType = findActivitiesOfType;
+exports.findByRating = findByRating;
+exports.findByRatingAll = findByRatingAll;
+exports.findFoodTypes = findFoodTypes;
+exports.findByRatingAndFood = findByRatingAndFood;

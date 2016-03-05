@@ -10,6 +10,9 @@ $(document).ready(function(){
 
   $(".updateBtn").hide();
 
+/*===============================================================
+  DELETE BUTTON TO DO AJAX REQUEST TO API AND DELETE REVIEW
+===========================================================*/
   $(".deleteBtn").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
@@ -28,6 +31,9 @@ $(document).ready(function(){
     });
   });
 
+/*===============================================================
+  WHEN EDIT BUTTON IS PRESSED THE TEXTAREA SHOWS UP
+===========================================================*/
   $(".editBtn").on("click", function(e) {
     e.preventDefault();
     var reviewContent = $(this).parent().siblings(".review-text").text();
@@ -35,6 +41,9 @@ $(document).ready(function(){
     $(this).parent().siblings(".updateBtn").toggle();
   });
 
+/*===============================================================
+  HITS THE API TO UPDATE THE REVIEW
+===========================================================*/
   $(".updateBtn").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
@@ -65,15 +74,32 @@ $(document).ready(function(){
     });
   });
 
+/*===============================================================
+  HIDE THE EDIT BUTTONS FROM USERS NOT LOGGED IN. BACKEND WILL PREVENT JS HACKS
+===========================================================*/
   $(".deleteEdit").hide();
   $(".deleteEdit").each(function() {
     if(parseInt($("#userID").text()) === $(this).siblings(".username-review").data("userid")) {
       $(this).show();
     }
   });
+  $(".food-type-container").hide();
+  if($("#filterType").val() === "food" || $("#filterType").val() === "all") {
+    $(".food-type-container").show();
+  }
 
+/*===============================================================
+  FILTER BY TYPE WILL HIT API TO SHOW THAT TYPE ONLY
+===========================================================*/
   $("#filterType").on("change", function(e) {
     e.preventDefault();
+    if($("#filterType").val() === "food" || $("#filterType").val() === "all") {
+      $(".food-type-container").show();
+    } else {
+      $(".food-type-container").hide();
+    }
+    $(".ratingCheck").attr("checked", false);
+    $(".food-type").attr("checked", false);
     var type = $(this).val();
     var that = $(this);
     $.ajax({
@@ -102,7 +128,87 @@ $(document).ready(function(){
       $(".activity-content").append(activity);
     }
   }
+
+/*===============================================================
+  FILTER BY RATING WILL HIT API AND SHOW SELECTED RATINGS
+===========================================================*/
+  $(".ratingCheck").on("change", function() {
+    var rating_value = [];
+    $(".ratingCheck").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            rating_value.push($(this).val());
+        }
+    });
+    var foodtype_value = [];
+    $(".food-type").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            foodtype_value.push($(this).val());
+        }
+    });
+    if(rating_value.length === 0) {
+      rating_value = [1,2,3,4,5];
+    }
+    $.ajax({
+      url: '/filterRating',
+      type: 'POST',
+      data: {
+              ratings: rating_value,
+              filterType: $("#filterType").val(),
+              foodType: foodtype_value
+            },
+      success: function(result) {
+        $(".listOfActivities").remove();
+        filterSuccessHandler(result);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        alert(xhr);
+        alert(thrownError);
+      }
+    });
+  });
   
+  $(".food-type").on("change", function() {
+    var foodtype_value = [];
+    $(".food-type").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            foodtype_value.push($(this).val());
+        }
+    });
+    var rating_value = [];
+    $(".ratingCheck").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            rating_value.push($(this).val());
+        }
+    });
+    if(rating_value.length === 0) {
+      rating_value = [1,2,3,4,5];
+    }
+    $.ajax({
+      url: '/filterRating',
+      type: 'POST',
+      data: {foodType: foodtype_value,
+              ratings: rating_value,
+              filterType: $("#filterType").val()},
+      success: function(result) {
+        $(".listOfActivities").remove();
+        filterSuccessHandler(result);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        alert(xhr);
+        alert(thrownError);
+      }
+    });
+  });
+
+/*===============================================================
+  FILTER BY RATING WILL HIT API AND SHOW SELECTED RATINGS
+===========================================================*/
   $(".animsition").animsition({
     inClass: 'fade-in',
     outClass: 'fade-out',

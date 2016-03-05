@@ -10,6 +10,7 @@
           <option value="dorm">Dorms</option>
           <option value="cafe">Cafe</option>
           <option value="other">Other</option>
+          <option value="all" selected="selected">All</option>
         </select>
       </form>
     </div>
@@ -19,44 +20,36 @@
       <aside class="filters">
         <h5>Rutgers Ratings</h5>
         <div class="divider"></div>
-        <form action="#">
+        <form method="post" action="/filterRating" id="rating">
           <p>
-            <input type="checkbox" class="filled-in" id="1"/>
+            <input type="checkbox" class="filled-in ratingCheck" id="1" value="1"/>
             <label for="1">1</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="2"/>
+            <input type="checkbox" class="filled-in ratingCheck" id="2" value="2"/>
             <label for="2">2</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="3"/>
+            <input type="checkbox" class="filled-in ratingCheck" id="3" value="3"/>
             <label for="3">3</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="4"/>
+            <input type="checkbox" class="filled-in ratingCheck" id="4" value="4"/>
             <label for="4">4</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="5"/>
+            <input type="checkbox" class="filled-in ratingCheck" id="5" value="5"/>
             <label for="5">5</label>
           </p>
           <br />
           <div class="divider"></div>
-          <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
+          {{#each foodTypes}}
+          <p class="food-type-container">
+            <input type="checkbox" class="food-type" id="{{foodType}}" value="{{foodType}}" />
+            <label for="{{foodType}}">{{foodType}}</label>
           </p>
           <br />
-          <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
-          </p>
-          <br />
-          <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
-          </p>
-          <br />
+          {{/each}}
         </form>
       </aside>
     </div>
@@ -69,7 +62,7 @@
         </div>
         {{#each activities}}
         <div class="row listOfActivities">
-          <div class="col m4 url" id="title"><a href="activities/{{name}}">{{ name }}</a></div>
+          <div class="col m4 url" id="title"><a href="/activities/{{name}}">{{ name }}</a></div>
           <div class="col m3">{{ rating }}</div>
         </div>
         {{/each}}

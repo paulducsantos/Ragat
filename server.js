@@ -17,7 +17,7 @@ require('dotenv').config();
 var sequelize = new Sequelize(process.env.JAWSDB_URL);
 // var sequelize = new Sequelize('Ragat_db', 'root');
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/static', express.static('public'));
 app.engine('handlebars', expressHandlebars({
                                     defaultLayout: __dirname + '/app/views/layouts/main.handlebars',

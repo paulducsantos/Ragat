@@ -18,6 +18,10 @@ module.exports.routes =  function(app) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+/*===============================================================
+  THESE ARE THE POSSIBLE ROUTES
+===========================================================*/
+
   app.get('/', renders.home);
 
   app.get('/register', renders.register);
@@ -53,7 +57,7 @@ module.exports.routes =  function(app) {
 
   app.post('/updateReview/:id', renders.updateReview);
 
-  
+  app.post('/filterRating', renders.filterActivitiesByRating);
 /*===============================================================
   PASSPORT SESSION SETUP
 ===========================================================*/
