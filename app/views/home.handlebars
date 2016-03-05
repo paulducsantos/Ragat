@@ -97,8 +97,9 @@
     <div class="section center section-heading-div">
       <h3 class="section-heading-text">Latest Buzz</h3>
       <div class="row">
-        {{#each topBuzz}}     
+        {{#each topBuzz}}
         <div class="col m4">
+        <a href="/activities/{{name}}">  
           <div class="card red darken-4 card-div">
             <div class="card-content white-text">
               <span class="card-title">{{name}}</span>
@@ -107,6 +108,7 @@
             <div class="card-action">
             </div>
           </div>
+          </a>
         </div>
         {{/each}}
       </div>
@@ -121,6 +123,7 @@
       <div class="row">
         {{#each topActivities}}
         <div class="col m4">
+        <a href="/activities/{{name}}">
           <div class="card red darken-4 card-div">
             <div class="card-content white-text">
               <span class="card-title">{{name}}</span>
@@ -129,6 +132,7 @@
             <div class="card-action">
             </div>
           </div>
+
         </div>
         {{/each}}
       </div>
