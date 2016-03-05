@@ -12,7 +12,7 @@ exports.checkAuth = function(req, res, next) {
 }
 
 /* ==========================================================================
-    CONTROLLER FOR HANDLING ROUTES
+    CONTROLLER FOR HANDLING ROUTES. EXPORT THESE FUNCTIONS FOR USE IN THE ROUTER
 ==========================================================================*/
     exports.home = function(req, res, next) {
       models.findTopActivities().then(function(topActivities){
@@ -114,7 +114,6 @@ exports.checkAuth = function(req, res, next) {
 
 
     exports.newActivity = function(req, res, next) {
-      debugger;
       models.Activity.create(req.body).then(function() {
         res.redirect('/activities/' + req.body.name);
       }).catch(function(error) {

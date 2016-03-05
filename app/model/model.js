@@ -224,6 +224,7 @@ var Review = sequelize.define('Review', {
 sequelize.sync();
 
 /*===============================================================
+<<<<<<< HEAD
   EXPORTS
   ===========================================================*/
   exports.User = User;
@@ -243,3 +244,4 @@ sequelize.sync();
   exports.findByRatingAll = findByRatingAll;
   exports.findFoodTypes = findFoodTypes;
   exports.findByRatingAndFood = findByRatingAndFood;
+
