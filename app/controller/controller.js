@@ -44,11 +44,8 @@ exports.checkAuth = function(req, res, next) {
     }
 
     exports.filterActivitiesByType = function(req, res, next) {
-      models.findActivitiesOfType(req.body.filterType).then(function(activities){
-        res.render('filteredActivities',{
-          activities: activities,
-          activeFilter: req.body.filterType
-        })
+      models.findActivitiesOfType(req.body.type).then(function(activities){
+        res.json({activities});
       })
     }
 

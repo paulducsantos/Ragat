@@ -24,17 +24,11 @@ module.exports.routes =  function(app) {
 
   app.get('/activities', renders.activities);
 
-  app.post('/filterActivities', renders.filterActivitiesByType);
-
   app.get('/activities/:name', renders.activityListing);
 
   app.get('/test', renders.test);
 
   app.get('/dashboard', renders.checkAuth, renders.dashboard);
-
-  app.delete('/deleteReview/:id', renders.destroyReview);
-
-  app.post('/updateReview/:id', renders.updateReview);
 
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 
@@ -50,8 +44,19 @@ module.exports.routes =  function(app) {
 
   app.post('/addActivity', renders.newActivity);
 
+/*===============================================================
+  HIT MY API WITH THESE ROUTES
+===========================================================*/
+  app.post('/filterActivities', renders.filterActivitiesByType);
 
+  app.delete('/deleteReview/:id', renders.destroyReview);
 
+  app.post('/updateReview/:id', renders.updateReview);
+
+  
+/*===============================================================
+  PASSPORT SESSION SETUP
+===========================================================*/
   passport.serializeUser(function(user, done) {
     done(null, user);
   });
