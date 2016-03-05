@@ -10,7 +10,7 @@ var sequelize = new Sequelize(process.env.JAWSDB_URL);
 var User = sequelize.define('User', {
   username: {
     type: Sequelize.STRING,
-    isUnique: true,
+    unique: true,
     validate: {
       len: [6,30]
     }
@@ -52,7 +52,7 @@ var Activity = sequelize.define('Activity', {
   },
   name: {
     type: Sequelize.STRING,
-    isUnique: true,
+    unique: true,
     validate: {
       notEmpty: true  
     }
@@ -78,6 +78,12 @@ var Review = sequelize.define('Review', {
   },
   rating: {
     type: Sequelize.INTEGER,
+    validate: {
+      notEmpty: true,
+    }
+  },
+  reviewedBy: {
+    type: Sequelize.STRING,
     validate: {
       notEmpty: true,
     }

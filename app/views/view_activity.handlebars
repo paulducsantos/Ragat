@@ -24,7 +24,7 @@
           {{#each reviews}}
           <li class="review">
             <div class="review-content">
-              <h5 class="username-review" data-userid={{UserId}}>USERNAME</h5>
+              <h5 class="username-review" data-userid={{UserId}}>{{reviewedBy}}</h5>
               <p name="{{id}}" class="review-text">{{ review }}</p>
               <a class="waves-effect waves-light btn updateBtn" data-id={{id}} data-reviewedby={{UserId}}>Update Review!</a>
               <div class="deleteEdit">
