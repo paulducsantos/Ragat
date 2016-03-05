@@ -6,9 +6,11 @@
         <div class="row center">
           <h3 class="header col s12 black-text home-subheading">Discover new places at Rutgers!</h3>
         </div>
+        {{#if isAuthenticated}}
         <div class="row center">
           <a id="place-button" class="btn-large waves-effect waves-light red darken-4 modal-trigger" href="#modal2">Add Place</a>
         </div>
+        {{/if}}
       </div>
     </div>
     <div class="parallax"><img id="parallax-img" src="../../static/images/jumbotron-placeholder-img.jpg"></div>
