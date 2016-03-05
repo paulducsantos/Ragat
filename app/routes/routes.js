@@ -5,6 +5,9 @@ var models = require('../model/model.js');
 var bcrypt            = require('bcryptjs');
 var session = require('express-session');
 
+/*===============================================================
+  EXPORT THESE ROUTES TO THE SERVER.JS
+===========================================================*/
 module.exports.routes =  function(app) {
 
   app.use(require('express-session')({
