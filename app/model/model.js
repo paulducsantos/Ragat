@@ -158,6 +158,16 @@ var findByRating = function(ratings, type) {
   });
 }
 
+var findByRatingAndFood = function(filter) {
+  return Activity.findAll({
+    where: {
+      activityType: 'food',
+      // rating: filter.ratings,
+      foodType: filter.foodType
+    }
+  });
+}
+
 var findFoodTypes = function() {
   return sequelize.query('SELECT DISTINCT foodType FROM `Activities` WHERE foodType IS NOT NULL');
 }
@@ -220,3 +230,4 @@ exports.findActivitiesOfType = findActivitiesOfType;
 exports.findByRating = findByRating;
 exports.findByRatingAll = findByRatingAll;
 exports.findFoodTypes = findFoodTypes;
+exports.findByRatingAndFood = findByRatingAndFood;

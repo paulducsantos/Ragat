@@ -64,7 +64,13 @@ exports.checkAuth = function(req, res, next) {
     }
 
     exports.filterActivitiesByRating = function(req, res, next) {
-      if(req.body.filterType === "all") {
+      debugger;
+      if(req.body.foodType) {
+        models.findByRatingAndFood(req.body).then(function(activities) {
+          res.json({activities});
+        });
+      }
+      else if(req.body.filterType === "all") {
         models.findByRatingAll(req.body.ratings).then(function(activities) {
           res.json({activities});
         });

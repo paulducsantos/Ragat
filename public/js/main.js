@@ -134,20 +134,20 @@ $(document).ready(function(){
   FILTER BY RATING WILL HIT API AND SHOW SELECTED RATINGS
 ===========================================================*/
   $(".ratingCheck").on("change", function() {
-    var checkbox_value = [];
+    var rating_value = [];
     $(".ratingCheck").each(function () {
         var ischecked = $(this).is(":checked");
         if (ischecked) {
-            checkbox_value.push($(this).val());
+            rating_value.push($(this).val());
         }
     });
-    console.log(checkbox_value);
-    // your awesome code calling ajax
     $.ajax({
       url: '/filterRating',
       type: 'POST',
-      data: {ratings: checkbox_value,
-              filterType: $("#filterType").val()},
+      data: {
+              ratings: rating_value,
+              filterType: $("#filterType").val()
+            },
       success: function(result) {
         $(".listOfActivities").remove();
         filterSuccessHandler(result);
@@ -175,6 +175,9 @@ $(document).ready(function(){
             rating_value.push($(this).val());
         }
     });
+    if(rating_value.length === 0) {
+      rating_value = [1,2,3,4,5];
+    }
     $.ajax({
       url: '/filterRating',
       type: 'POST',
@@ -183,6 +186,7 @@ $(document).ready(function(){
               filterType: $("#filterType").val()},
       success: function(result) {
         $(".listOfActivities").remove();
+        console.log(result);
         filterSuccessHandler(result);
       },
       error: function (xhr, ajaxOptions, thrownError) {
