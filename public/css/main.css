@@ -9,15 +9,6 @@ main {
   flex: 1 0 auto;
 }
 
-.ruNav {
-  background-color: #CC0033;
-}
-
-#aboutModal {
-  width: 100%;
-  background-color: #CC0033;
-}
-
 #filter-types {
   display: flex;
 }
@@ -35,6 +26,19 @@ main {
   align-content: center;
 }
 
+          /*MODALS*/
+
+#aboutModal {
+  width: 100%;
+  background-color: #CC0033;
+}
+
+          /*TOP NAV*/
+
+.ruNav {
+  background-color: #CC0033;
+}
+
 .brand-logo {
   letter-spacing: 2px;
   font-weight: bold;
@@ -44,9 +48,11 @@ main {
   text-transform: lowercase;
 }
 
+          /*HEADINGS*/
+
 .home-heading {
   font-family: 'Roboto Condensed', sans-serif;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-size: 72px;
 
   /* WebKit (Safari/Chrome) Only */
@@ -72,12 +78,7 @@ main {
   color: rgba(0, 0, 0, 0.8);
 }
 
-
 #title {
-  text-transform: capitalize;
-}
-
-.card-title {
   text-transform: capitalize;
 }
 
@@ -90,24 +91,23 @@ main {
   opacity: 0.8;
 }
 
+          /*CARDS*/
+
 .card-div {
   margin: 25px;
   padding: 8px 10px;
 }
 
-#nav-stars {
-  padding-left: 140px;
+.card-title {
+  text-transform: capitalize;
 }
+
+          /*PARALLAX*/
 
 #parallax-img {
   opacity: 0.4;
-  -webkit-filter: contrast(175%);
-  -webkit-filter: brightness(25%);
+  -webkit-filter: contrast(130%);
+  -webkit-filter: brightness(10%);
   -webkit-filter: blur(1px);
   -webkit-filter: grayscale(50%);
 }
-
-/*.deleteBtn {
-  justify-content: space-around;
-  align-content: center;
-}*/
