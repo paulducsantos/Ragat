@@ -10,6 +10,9 @@ $(document).ready(function(){
 
   $(".updateBtn").hide();
 
+/*===============================================================
+  DELETE BUTTON TO DO AJAX REQUEST TO API AND DELETE REVIEW
+===========================================================*/
   $(".deleteBtn").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
@@ -28,6 +31,9 @@ $(document).ready(function(){
     });
   });
 
+/*===============================================================
+  WHEN EDIT BUTTON IS PRESSED THE TEXTAREA SHOWS UP
+===========================================================*/
   $(".editBtn").on("click", function(e) {
     e.preventDefault();
     var reviewContent = $(this).parent().siblings(".review-text").text();
@@ -35,6 +41,9 @@ $(document).ready(function(){
     $(this).parent().siblings(".updateBtn").toggle();
   });
 
+/*===============================================================
+  HITS THE API TO UPDATE THE REVIEW
+===========================================================*/
   $(".updateBtn").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
@@ -65,6 +74,9 @@ $(document).ready(function(){
     });
   });
 
+/*===============================================================
+  HIDE THE EDIT BUTTONS FROM USERS NOT LOGGED IN. BACKEND WILL PREVENT JS HACKS
+===========================================================*/
   $(".deleteEdit").hide();
   $(".deleteEdit").each(function() {
     if(parseInt($("#userID").text()) === $(this).siblings(".username-review").data("userid")) {
@@ -72,8 +84,12 @@ $(document).ready(function(){
     }
   });
 
+/*===============================================================
+  FILTER BY TYPE WILL HIT API TO SHOW THAT TYPE ONLY
+===========================================================*/
   $("#filterType").on("change", function(e) {
     e.preventDefault();
+    $(".ratingCheck").attr("checked", false);
     var type = $(this).val();
     var that = $(this);
     $.ajax({
@@ -102,6 +118,36 @@ $(document).ready(function(){
       $(".activity-content").append(activity);
     }
   }
+
+/*===============================================================
+  FILTER BY RATING WILL HIT API AND SHOW SELECTED RATINGS
+===========================================================*/
+  $(".ratingCheck").on("change", function() {
+    var checkbox_value = [];
+    $(".ratingCheck").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            checkbox_value.push($(this).val());
+        }
+    });
+    console.log(checkbox_value);
+    // your awesome code calling ajax
+    $.ajax({
+      url: '/filterRating',
+      type: 'POST',
+      data: {ratings: checkbox_value,
+              filterType: $("#filterType").val()},
+      success: function(result) {
+        $(".listOfActivities").remove();
+        filterSuccessHandler(result);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        alert(xhr);
+        alert(thrownError);
+      }
+    });
+  });
   
   $(".animsition").animsition({
     inClass: 'fade-in',

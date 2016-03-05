@@ -1,5 +1,8 @@
 var models = require('../model/model.js');
 
+/*===============================================================
+  CHECK AUTH FOR LOGGED IN USERS
+===========================================================*/
 exports.checkAuth = function(req, res, next) {
  if (req.isAuthenticated()) {
    next();
@@ -8,9 +11,9 @@ exports.checkAuth = function(req, res, next) {
  }
 }
 
-/* ============================================================================================
-    RENDERS
-    ==================================================================================*/
+/* ==========================================================================
+    CONTROLLER FOR HANDLING ROUTES
+==========================================================================*/
     exports.home = function(req, res, next) {
       models.findTopActivities().then(function(topActivities){
         models.findLatestBuzz().then(function(topBuzz){
@@ -44,9 +47,27 @@ exports.checkAuth = function(req, res, next) {
     }
 
     exports.filterActivitiesByType = function(req, res, next) {
-      models.findActivitiesOfType(req.body.type).then(function(activities){
-        res.json({activities});
-      })
+      if(req.body.type === "all") {
+        models.findAllActivity().then(function(activities) {
+          res.json({activities});
+        });
+      } else {
+        models.findActivitiesOfType(req.body.type).then(function(activities){
+          res.json({activities});
+        });
+      }
+    }
+
+    exports.filterActivitiesByRating = function(req, res, next) {
+      if(req.body.filterType === "all") {
+        models.findByRatingAll(req.body.ratings).then(function(activities) {
+          res.json({activities});
+        });
+      } else {
+        models.findByRating(req.body.ratings, req.body.filterType).then(function(activities){
+          res.json({activities});
+        });
+      }
     }
 
     exports.test = function(req, res, next) {
