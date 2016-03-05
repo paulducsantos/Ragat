@@ -71,6 +71,37 @@ $(document).ready(function(){
       $(this).show();
     }
   });
+
+  $("#filterType").on("change", function(e) {
+    e.preventDefault();
+    var type = $(this).val();
+    var that = $(this);
+    $.ajax({
+      url: '/filterActivities/',
+      type: 'POST',
+      data: {type},
+      success: function(result) {
+        $(".listOfActivities").remove();
+        filterSuccessHandler(result);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        alert(xhr);
+        alert(thrownError);
+      }
+    });
+  });
+
+  var filterSuccessHandler = function(listOfActivities) {
+    var shortendActivityList = listOfActivities.activities
+    for(var i=0; i < shortendActivityList.length; i++) {
+      var row = $("<div>").addClass("row listOfActivities");
+      var nameOfActivity = $("<div>").addClass("col m4 url").append($("<a href='activities/" + shortendActivityList[i].name + "'>").html(shortendActivityList[i].name));
+      var rating = $("<div class='col m3'>").html(shortendActivityList[i].rating);
+      var activity = row.append(nameOfActivity).append(rating);
+      $(".activity-content").append(activity);
+    }
+  }
   
   $(".animsition").animsition({
     inClass: 'fade-in',

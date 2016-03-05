@@ -5,7 +5,7 @@
     </div>
     <div class="input-field col s3">
       <form method="post" action="/filterActivities/">
-        <select name="filterType" onchange="this.form.submit()">
+        <select name="filterType" id="filterType">
           <option value="food">Food</option>
           <option value="dorm">Dorms</option>
           <option value="cafe">Cafe</option>
@@ -68,7 +68,7 @@
           <div class="col m3">Rating</div>
         </div>
         {{#each activities}}
-        <div class="row">
+        <div class="row listOfActivities">
           <div class="col m4 url" id="title"><a href="activities/{{name}}">{{ name }}</a></div>
           <div class="col m3">{{ rating }}</div>
         </div>
