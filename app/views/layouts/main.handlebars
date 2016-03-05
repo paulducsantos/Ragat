@@ -11,17 +11,53 @@
   <link rel="stylesheet" type="text/css" href="../static/css/register.css">
   <link rel="stylesheet" type="text/css" href="../static/css/jumbotron.css">
   <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.1/css/animsition.min.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
 </head>
 {{>navbar}}
 <body>
   <main>
+
+  <!-- Navbar -->
+  <div id="fakeloader"></div> {{!-- include fakeLoader --}}
+  <nav class="ruNav red darken-4">
+    <div class="container">
+      <div class="nav-wrapper row">
+        <a href="/" class="brand-logo">RURated</a>
+        <ul class="right hide-on-med-and-down nav-link">
+          <li><a href='/register' class="animsition-link">Register</a></li>
+          <li><a id="login" href="#">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="login-form" class="webui-popover-content">
+    <form id="formLogin" class="col s12" method="POST" action="/login">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="text" class="validate" name="username">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" name="password">
+          <label for="password">Password</label>
+        </div>
+        <button type="submit" class="waves-effect waves-light red darken-4 btn submit-btn">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <main class="animsition">
     {{{ body }}}
   </main>
   <!-- Modal Trigger -->
-  <footer class="page-footer modal-trigger btn" id="aboutModal" href="#modal1">
+  <footer class="page-footer modal-trigger btn red darken-4" id="aboutModal" href="#modal1">
   </footer>
   <!-- Modal Structure -->
   <div id="modal1" class="modal bottom-sheet">
@@ -33,6 +69,9 @@
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <script src="../static/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.1/js/animsition.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
   <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
   <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js"></script>

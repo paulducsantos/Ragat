@@ -12,7 +12,14 @@ exports.checkAuth = function(req, res, next) {
     RENDERS
     ==================================================================================*/
     exports.home = function(req, res, next) {
-      res.render('home');
+      models.findTopActivities().then(function(topActivities){
+        models.findLatestBuzz().then(function(topBuzz){
+        res.render('home',{
+          topActivities: topActivities,
+          topBuzz: topBuzz
+        })
+        })
+      })
     }
 
     exports.homeRedirect = function(req, res, next) {
@@ -52,7 +59,8 @@ exports.checkAuth = function(req, res, next) {
         models.Review.create({
           review: req.body.review,
           rating: req.body.rating,
-          ActivityId: activityId
+          ActivityId: activityId,
+          UserId: req.user.id
         });
         res.redirect('/activities/' + activity);
       });
@@ -70,6 +78,20 @@ exports.checkAuth = function(req, res, next) {
       });
     }
 
+    exports.destroyReview = function(req, res, next) {
+      models.deleteReview(req.params.id);
+      res.json({});
+    }
+
+    exports.updateReview = function(req, res, next) {
+      if(parseInt(req.body.UserId) === req.user.id) {
+        models.updateReview(req.body, req.user.id);
+        res.json({err: false});
+      } else {
+        res.json({err: "You can't edit this post"});
+      }
+    }
+
     exports.activityListing = function(req, res, next) {
       var name = req.params.name;
       models.findActivity(name).then(function(data){
@@ -79,7 +101,11 @@ exports.checkAuth = function(req, res, next) {
           activity: data
         }
         models.findReviews(activityID).then(function(activityReviews){
-          pageData.reviews = activityReviews
+          pageData.reviews = activityReviews;
+          if(req.isAuthenticated()) {
+            pageData.userID = req.user.id;  
+            pageData.loggedIn = true;  
+          }
           res.render('view_activity', pageData);
         });
       });

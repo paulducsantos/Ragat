@@ -30,6 +30,10 @@ module.exports.routes =  function(app) {
 
   app.get('/dashboard', renders.checkAuth, renders.dashboard);
 
+  app.delete('/deleteReview/:id', renders.destroyReview);
+
+  app.post('/updateReview/:id', renders.updateReview);
+
   app.post('/register/addUser', renders.newUser, renders.homeRedirect);
 
   app.post('/login',  
@@ -47,15 +51,14 @@ module.exports.routes =  function(app) {
 
 
   passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user);
   });
-  passport.deserializeUser(function(id, done) {
-    done(null, { id: id, username: id })
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
   });
   // use method as callback when being authenticated
   passport.use(new passportLocal.Strategy(function(username, password, done) {
     // check the password in database
-    debugger;
     models.User.findOne({
       where: {
         username: username
@@ -63,10 +66,10 @@ module.exports.routes =  function(app) {
     }).then(function(user) {
         // check the password against hash
         if(user){
-          bcrypt.compare(password, user.dataValues.userPassword, function(err, user) {
-            if (user) {
+          bcrypt.compare(password, user.dataValues.userPassword, function(err, userlogin) {
+            if (userlogin) {
                   // if password is valid -- authenticate the user with cookie
-                  done(null, { id: username, username: username });
+                  done(null, {id: user.id, username: user.username});
                 } else{
                   done(null, null);
                 }

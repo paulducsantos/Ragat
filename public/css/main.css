@@ -1,13 +1,13 @@
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    font-family: 'Open Sans Condensed', sans-serif;
-  }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Pontano Sans', sans-serif;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 
 .ruNav {
   background-color: #CC0033;
@@ -22,3 +22,92 @@
   display: flex;
 }
 
+.review-content {
+  position: relative;
+}
+
+.deleteEdit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.brand-logo {
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.nav-link {
+  text-transform: lowercase;
+}
+
+.home-heading {
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 3px;
+  font-size: 72px;
+
+  /* WebKit (Safari/Chrome) Only */
+  -webkit-text-stroke: 1px black;
+  
+  /* If we weren't using text-shadow, we'd set a fallback color
+     and use this to set color instead
+    -webkit-text-fill-color: white; */
+  
+  text-shadow:
+    4px 4px 0 #000,
+    /* Simulated effect for Firefox and Opera
+       and nice enhancement for WebKit */
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+}
+
+.home-subheading {
+  font-size: 24px;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+
+#title {
+  text-transform: capitalize;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
+
+.section-heading-div {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.section-heading-text {
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+
+.card-div {
+  margin: 25px;
+  padding: 8px 10px;
+}
+
+#nav-stars {
+  padding-left: 140px;
+}
+
+#parallax-img {
+  opacity: 0.4;
+  -webkit-filter: contrast(175%);
+  -webkit-filter: brightness(25%);
+  -webkit-filter: blur(1px);
+  -webkit-filter: grayscale(50%);
+}
+
+/*.deleteBtn {
+  justify-content: space-around;
+  align-content: center;
+}*/

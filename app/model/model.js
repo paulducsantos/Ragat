@@ -52,6 +52,7 @@ var Activity = sequelize.define('Activity', {
   },
   name: {
     type: Sequelize.STRING,
+    isUnique: true,
     validate: {
       notEmpty: true  
     }
@@ -103,6 +104,19 @@ var findReviews = function(activityId) {
   });
 }
 
+var findTopActivities = function(){
+  return Activity.findAll({
+    order:'rating DESC',
+    limit: 3
+  })
+};
+
+var findLatestBuzz = function(){
+  return Activity.findAll({
+    order:'updatedAt DESC',
+    limit: 3
+  })
+};
 
 Activity.hasMany(Review);
 User.hasMany(Review);
@@ -111,7 +125,6 @@ var updateRating = function(activityId) {
   sequelize.query('SELECT AVG(rating) AS avg FROM Reviews WHERE ActivityId=' + activityId)
   .then(function(data) {
     var avg = Math.round(data[0][0].avg * 2)/2;
-    debugger;
     Activity.update(
       {
         rating: avg
@@ -120,6 +133,26 @@ var updateRating = function(activityId) {
         where: {id: activityId}
       }
     );
+  });
+}
+
+var deleteReview = function(reviewId) {
+  Review.destroy({
+    where: {
+      id: reviewId
+    }
+  });
+}
+
+var updateReview = function(reviewData, user) {
+  Review.update({
+    review: reviewData.review//need to pass the review text
+  },
+  {
+    where: {
+      id: reviewData.id,
+      UserId: user
+    }
   });
 }
 
@@ -133,4 +166,9 @@ exports.Review = Review;
 exports.findActivity = findActivity;
 exports.updateRating = updateRating;
 exports.findReviews = findReviews;
+exports.deleteReview = deleteReview;
+exports.updateReview = updateReview;
 exports.findAllActivity = findAllActivity;
+exports.findTopActivities = findTopActivities;
+exports.findLatestBuzz = findLatestBuzz;
+exports.deleteReview = deleteReview;
