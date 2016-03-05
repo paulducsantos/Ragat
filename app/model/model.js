@@ -158,6 +158,10 @@ var findByRating = function(ratings, type) {
   });
 }
 
+var findFoodTypes = function() {
+  return sequelize.query('SELECT DISTINCT foodType FROM `Activities` WHERE foodType IS NOT NULL');
+}
+
 var updateRating = function(activityId) {
   sequelize.query('SELECT AVG(rating) AS avg FROM Reviews WHERE ActivityId=' + activityId)
   .then(function(data) {
@@ -215,3 +219,4 @@ exports.deleteReview = deleteReview;
 exports.findActivitiesOfType = findActivitiesOfType;
 exports.findByRating = findByRating;
 exports.findByRatingAll = findByRatingAll;
+exports.findFoodTypes = findFoodTypes;

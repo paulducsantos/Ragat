@@ -39,11 +39,16 @@ exports.checkAuth = function(req, res, next) {
     }
 
     exports.activities = function(req, res, next) {
-      models.findAllActivity().then(function(activities){
-        res.render('activities',{
-          activities: activities
+      models.findFoodTypes().then(function(foodTypes) {
+        var pageData = {};
+        pageData.foodTypes = foodTypes[0];
+        models.findAllActivity().then(function(activities){
+          pageData.activities = activities;
+          res.render('activities', pageData);
         })
-      })
+      });
+      
+      
     }
 
     exports.filterActivitiesByType = function(req, res, next) {

@@ -43,21 +43,13 @@
           </p>
           <br />
           <div class="divider"></div>
-          <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
+          {{#each foodTypes}}
+          <p class="food-type-container">
+            <input type="checkbox" class="food-type" id="{{foodType}}" value="{{foodType}}" />
+            <label for="{{foodType}}">{{foodType}}</label>
           </p>
           <br />
-          <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
-          </p>
-          <br />
-          <p>
-            <input type="checkbox" id="test5" />
-            <label for="test5">Red</label>
-          </p>
-          <br />
+          {{/each}}
         </form>
       </aside>
     </div>

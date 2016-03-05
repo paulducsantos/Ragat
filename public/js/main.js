@@ -83,13 +83,24 @@ $(document).ready(function(){
       $(this).show();
     }
   });
+  $(".food-type-container").hide();
+  if($("#filterType").val() === "food" || $("#filterType").val() === "all") {
+    $(".food-type-container").show();
+  }
 
 /*===============================================================
   FILTER BY TYPE WILL HIT API TO SHOW THAT TYPE ONLY
 ===========================================================*/
   $("#filterType").on("change", function(e) {
     e.preventDefault();
+    console.log($("#filterType").val() === "food");
+    if($("#filterType").val() === "food" || $("#filterType").val() === "all") {
+      $(".food-type-container").show();
+    } else {
+      $(".food-type-container").hide();
+    }
     $(".ratingCheck").attr("checked", false);
+    $(".food-type").attr("checked", false);
     var type = $(this).val();
     var that = $(this);
     $.ajax({
@@ -149,6 +160,42 @@ $(document).ready(function(){
     });
   });
   
+  $(".food-type").on("change", function() {
+    var foodtype_value = [];
+    $(".food-type").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            foodtype_value.push($(this).val());
+        }
+    });
+    var rating_value = [];
+    $(".ratingCheck").each(function () {
+        var ischecked = $(this).is(":checked");
+        if (ischecked) {
+            rating_value.push($(this).val());
+        }
+    });
+    $.ajax({
+      url: '/filterRating',
+      type: 'POST',
+      data: {foodType: foodtype_value,
+              ratings: rating_value,
+              filterType: $("#filterType").val()},
+      success: function(result) {
+        $(".listOfActivities").remove();
+        filterSuccessHandler(result);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        alert(xhr);
+        alert(thrownError);
+      }
+    });
+  });
+
+/*===============================================================
+  FILTER BY RATING WILL HIT API AND SHOW SELECTED RATINGS
+===========================================================*/
   $(".animsition").animsition({
     inClass: 'fade-in',
     outClass: 'fade-out',
